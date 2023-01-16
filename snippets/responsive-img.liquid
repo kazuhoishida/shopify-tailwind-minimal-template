@@ -1,0 +1,35 @@
+{%- liquid
+comment
+  media: required
+  size:  optional
+  id:    optional
+endcomment -%}
+<img {% if id %}id="{{ id }}"{% endif %}
+  srcset="{% if media.width >= 59 %}{{ media | image_url: width: 59 }} 59x,{% endif %}
+          {% if media.width >= 84 %}{{ media | image_url: width: 84 }} 84w,{% endif %}
+          {% if media.width >= 118 %}{{ media | image_url: width: 118 }} 118w,{% endif %}
+          {% if media.width >= 168 %}{{ media | image_url: width: 168 }} 168w,{% endif %}
+          {% if media.width >= 130 %}{{ media | image_url: width: 130 }} 130w,{% endif %}
+          {% if media.width >= 260 %}{{ media | image_url: width: 260 }} 260w,{% endif %}
+          {% if media.width >= 493 %}{{ media | image_url: width: 493 }} 493w,{% endif %}
+          {% if media.width >= 600 %}{{ media | image_url: width: 600 }} 600w,{% endif %}
+          {% if media.width >= 713 %}{{ media | image_url: width: 713 }} 713w,{% endif %}
+          {% if media.width >= 823 %}{{ media | image_url: width: 823 }} 823w,{% endif %}
+          {% if media.width >= 990 %}{{ media | image_url: width: 990 }} 990w,{% endif %}
+          {% if media.width >= 1100 %}{{ media | image_url: width: 1100 }} 1100w,{% endif %}
+          {% if media.width >= 1206 %}{{ media | image_url: width: 1206 }} 1206w,{% endif %}
+          {% if media.width >= 1346 %}{{ media | image_url: width: 1346 }} 1346w,{% endif %}
+          {% if media.width >= 1426 %}{{ media | image_url: width: 1426 }} 1426w,{% endif %}
+          {% if media.width >= 1646 %}{{ media | image_url: width: 1646 }} 1646w,{% endif %}
+          {% if media.width >= 1946 %}{{ media | image_url: width: 1946 }} 1946w,{% endif %}
+          {{ media | image_url }} {{ media.width }}w"
+  src="{{ media | image_url: width: 84, height: 84 }}"
+  {% capture imgSizes %}
+    (min-width: 1200px) 715px, (min-width: 990px) calc(65.0vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)
+  {% endcapture %}
+  sizes="{{ sizes | default: imgSizes }}"
+  alt="{{ media.alt | default: shop.name | escape }}"
+  height="1000"
+  width="1000"
+  loading="lazy"
+>

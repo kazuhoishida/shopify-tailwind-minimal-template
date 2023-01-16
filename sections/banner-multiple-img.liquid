@@ -1,0 +1,108 @@
+{% style %}
+  #banner-multiple-img {
+    --section-margin-s: {{ section.settings.section_margin | times: 0.75 | round: 0 }}px;
+    --section-margin: {{ section.settings.section_margin }}px;
+  }
+{% endstyle %}
+
+<div id="banner-multiple-img" class="my-[var(--section-margin-s)] md:my-[var(--section-margin)] md:grid md:grid-cols-2 md:items-center">
+  <div class="flex mb-20 w-page-mobile mx-auto {% if section.settings.section_reverse %}order-last{% endif %}">
+    {% assign customClass = 'w-1/2 h-auto' %}
+
+    {% unless section.settings.banner_image_01 == nil %}
+      <img
+        src="{{ section.settings.banner_image_01 | image_url }}"
+        width="{{ section.settings.banner_image_01.width }}"
+        height="{{ section.settings.banner_image_01.height }}"
+        alt="{{ section.settings.banner_image_01.alt | default: 'banner' }}"
+        class="{{ customClass }} translate-x-[2vw]"
+        loading="lazy"
+      >
+    {% endunless %}
+    {% unless section.settings.banner_image_02 == nil %}
+      <img
+        src="{{ section.settings.banner_image_02 | image_url }}"
+        width="{{ section.settings.banner_image_02.width }}"
+        height="{{ section.settings.banner_image_02.height }}"
+        alt="{{ section.settings.banner_image_02.alt | default: 'banner' }}"
+        class="{{ customClass }} -translate-x-[2vw] translate-y-20"
+        loading="lazy"
+      >
+    {% endunless %}
+  </div>
+
+  <div class="w-page-mobile md:w-7/10 md:max-w-[600px] h-auto mx-auto pt-12 pb-16">
+    <p class="text-16">{{ section.settings.headline }}</p>
+    <h2 class="text-36 mb-6">{{ section.settings.title }}</h2>
+    <div>{{ section.settings.banner_desc }}</div>
+    <div class="text-center md:text-left">
+      {% render 'btn-link', btn_link: section.settings.button_url, btn_link_text: section.settings.button_label %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "banner multiple img",
+  "tag": "section",
+  "class": "banner-multiple-img",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image_01",
+      "label": "画像【1】"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image_02",
+      "label": "画像【2】"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Banner multiple img"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "2021 SS Collection"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_desc",
+      "label": "banner description",
+      "default": "<p>banner description</p>"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "button link url",
+      "default": "/"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "button label text",
+      "default": "VIEW MORE"
+    },
+    {
+      "type": "range",
+      "id": "section_margin",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 20,
+      "label": "section top & bottom margin"
+    },
+    {
+      "type": "checkbox",
+      "id": "section_reverse",
+      "default": false,
+      "label": "section row/cols reverse or not"
+    }
+  ]
+}
+{% endschema %}

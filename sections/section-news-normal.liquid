@@ -1,0 +1,47 @@
+{% if blogs['news'].articles_count > 0 %}
+  <div class="py-section-my">
+    <div class="w-page-mobile px-3 mx-auto py-56px">
+      {% if section.settings.title != blank %}
+        <h3 class="text-28 mb-2">{{ section.settings.title }}</h3>
+      {% endif %}
+      <ul class="mb-8">
+        {% for article in blogs['news'].articles limit: section.settings.number_to_show %}
+          <li class="py-8 border-t last:border-b">
+            {% render 'blog-news-card', article: article %}
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="text-center">
+        {% render 'btn-link', btn_link: '/blogs/news', btn_link_text: 'VIEW MORE' %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Section News Normal",
+  "class": "sectionNewsNormal",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "タイトル",
+      "default": "News"
+    },
+    {
+      "type": "number",
+      "id": "number_to_show",
+      "label": "表示数",
+      "default": 3
+    }
+  ],
+  "presets": [
+    {
+      "category": "top",
+      "name": "section news normal"
+    }
+  ]
+}
+{% endschema %}

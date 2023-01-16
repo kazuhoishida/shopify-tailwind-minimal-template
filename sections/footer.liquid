@@ -1,0 +1,178 @@
+{% style %}
+  #custom-footer {
+    --footer-pt: {{ section.settings.ft_padding_top }}px;
+    --footer-pb: {{ section.settings.ft_padding_bottom }}px;
+  }
+{% endstyle %}
+
+<footer id="custom-footer" class="footer bg-pale-gray">
+  <div class="w-page-mobile mx-auto pt-[var(--footer-pt)] pb-[var(--footer-pb)] relative text-center">
+    <div class="mb-10 inline-block hover:opacity-60">
+      <a href="/">
+        {% render 'icon-logo' %}
+      </a>
+    </div>
+
+    {%- for block in section.blocks -%}
+      <div {{ block.shopify_attributes }}>
+        {%- case block.type -%}
+          {%- when 'link_list' -%}
+            {%- if block.settings.menu != blank and block.settings.heading != blank -%}
+              <ul class="mb-12 flex justify-center flex-wrap">
+                {%- for link in block.settings.menu.links -%}
+                  <li class="mr-10 mb-6">
+                    <a href="{{ link.url }}" class="py-2 inline-block  text-base-text hover:opacity-60 hover:underline transition-all">
+                      {{ link.title }}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+        {%- endcase -%}
+      </div>
+    {%- endfor -%}
+
+    {% if section.settings.show_social == true %}
+      {% render 'footer-social-ul' %}
+    {% endif %}
+
+    <div class="text-12 relative right-0 bottom-0 whitespace-nowrap">
+      <small class="copyright__content">
+        &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }} All Rights Reserved. 
+      </small>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "t:sections.footer.blocks.link_list.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "t:sections.footer.blocks.link_list.settings.heading.label",
+          "info": "t:sections.footer.blocks.link_list.settings.heading.info"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "t:sections.footer.blocks.link_list.settings.menu.label",
+          "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.footer.blocks.text.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Heading",
+          "label": "t:sections.footer.blocks.text.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "subtext",
+          "default": "<p>Share contact information, store details, and brand content with your customers.</p>",
+          "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 50,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "label": "Image width",
+          "default": 100
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Image alignment on large screen",
+          "options": [
+            {
+              "value": "",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__1.content",
+      "info": "t:sections.footer.settings.header__1.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__2.content",
+      "info": "t:sections.footer.settings.header__2.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": true,
+      "label": "t:sections.footer.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "ft_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "ft_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 20
+    }
+  ]
+}
+{% endschema %}

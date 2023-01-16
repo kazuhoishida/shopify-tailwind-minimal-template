@@ -1,0 +1,75 @@
+{% style %}
+  #top-product-minimal {
+    --columns-mobile: repeat({{ section.settings.columns_mobile }}, minmax(0, 1fr));
+    --columns-desktop: repeat({{ section.settings.columns_desktop }}, minmax(0, 1fr));
+  }
+{% endstyle %}
+
+<div id="top-product-minimal" class="py-section-my w-page-mobile mx-auto py-20">
+  {% if section.settings.headline != blank %}
+    <h2 class="mb-4">{{ section.settings.headline }}</h2>
+  {% endif %}
+  {% assign collection = collections[section.settings.collection] %}
+  <ul class="custom-product-grid grid-cols-[var(--columns-sp)] md:grid-cols-[var(--columns-desktop)]">
+    {%- for product in collection.products limit: 4 -%}
+      {% if product.available %}
+        <li class="mb-20 text-center">
+          {% render 'card-product', card_product: product, lazy_load: true %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Top プロダクト minimal",
+  "class": "topProductMinimal",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "collection",
+      "label": "コレクション",
+      "default": "all-products"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "headline",
+      "default": "Best Selling (minimal)"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "column num for desktop"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "2",
+      "label": "t:sections.main-collection-product-grid.settings.columns_mobile.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.main-collection-product-grid.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.main-collection-product-grid.settings.columns_mobile.options__2.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "top",
+      "name": "Top プロダクト minimal"
+    }
+  ]
+}
+{% endschema %}

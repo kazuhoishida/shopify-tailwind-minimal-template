@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "section-category": {
+      "type": "section-category",
+      "settings": {
+      }
+    },
+    "section-category-masonry": {
+      "type": "section-category-masonry",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "section-category",
+    "section-category-masonry"
+  ]
+}

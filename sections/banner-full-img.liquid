@@ -1,0 +1,96 @@
+{% style %}
+  #banner-full-img {
+    --color-bg: {{ section.settings.color_bg }};
+    --color-text: {{ section.settings.color_text }};
+    --bg-image-opacity: {{ section.settings.bg_image_opacity }}%;
+  }
+{% endstyle %}
+
+<div id="banner-full-img" class="flex justify-center items-center text-center relative py-20 text-white [color:var(--color-text)] [background:var(--color-bg)]">
+  {% unless section.settings.full_bg_image == nil %}
+    <img
+      src="{{ section.settings.full_bg_image | image_url }}"
+      width="{{ section.settings.full_bg_image.width }}"
+      height="{{ section.settings.full_bg_image.height }}"
+      alt="{{ section.settings.full_bg_image.alt | default: 'banner' }}"
+      class="absolute top-0 left-0 w-full h-full object-cover opacity-[var(--bg-image-opacity)]"
+      loading="lazy"
+    >
+  {% endunless %}
+
+  <div class="relative w-page-mobile md:w-[clamp(600px,50%,980px)] mx-auto">
+    <p class="text-16">{{ section.settings.headline }}</p>
+    <h2 class="text-36 mb-10 leading-tight">{{ section.settings.title }}</h2>
+    <div>{{ section.settings.banner_desc }}</div>
+    <div class="text-center">
+      {% render 'btn-link', btn_link: section.settings.button_url, btn_link_text: section.settings.button_label %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "banner full img",
+  "tag": "section",
+  "class": "banner-full-img",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "full_bg_image",
+      "label": "背景画像"
+    },
+    {
+      "type": "range",
+      "id": "bg_image_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "opacity of the bg image",
+      "default": 85
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "background color (and you can change opacity of the bg image)",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Banner Section(banner-full-img)"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "2021 SS Collection"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_desc",
+      "label": "banner description",
+      "default": "<p>banner description</p>"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "button link url",
+      "default": "/"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "button label text",
+      "default": "VIEW MORE"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "text color",
+      "default": "#ffffff"
+    }
+  ]
+}
+{% endschema %}

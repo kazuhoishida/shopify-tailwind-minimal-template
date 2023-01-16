@@ -1,0 +1,31 @@
+.activeCatList {
+  color: black;
+  border-bottom: 1px solid black;
+}
+.categoryNameUl {
+  display: grid;
+  width: 100%;
+  grid-auto-flow: row;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-content: center;
+}
+@media (min-width: 640px) {
+  .categoryNameUl {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.categoryNameUl {
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+  transform: translate3d(-50%, 0, 0);
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+}
+.categoryNameUl.active {
+  opacity: 1;
+  transition-delay: 0.25s;
+  visibility: visible;
+}

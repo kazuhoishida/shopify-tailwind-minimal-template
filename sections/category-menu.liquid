@@ -1,0 +1,36 @@
+<div>
+  {% if section.settings.title != blank %}
+    <h2>{{ section.settings.title }}</h2>
+  {% endif %}
+  <ul>
+    {% for collection in collections %}
+      <li>
+        <a href="{{ collection.url }}">{{ collection.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <ul>
+    {% for product_type in shop.types %}
+      <li>
+        {{ product_type | link_to_type }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "カテゴリーメニュー",
+  "class": "categoryMenu",
+  "tag": "section",
+  "settings": [
+
+  ],
+  "presets": [
+    {
+      "category": "top",
+      "name": "カテゴリーメニュー"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,87 @@
+{% style %}
+  #top-product-flex {
+    --product-flex-bg: {{ section.settings.color_bg }};
+    --product-flex-text-color: {{ section.settings.color_text }};
+  }
+{% endstyle %}
+
+<div id="top-product-flex" class="py-section-my [background:var(--product-flex-bg)] [color:var(--product-flex-text-color)]">
+  <div class="w-page-mobile mx-auto py-20">
+    {% if section.settings.headline != blank %}
+      <h2 class="mb-4 [color:var(--product-flex-text-color)]">{{ section.settings.headline }}</h2>
+    {% endif %}
+    
+    {% assign collection = collections[section.settings.collection] %}
+    <ul class="custom-product-grid grid-cols-{{ section.settings.columns_mobile }} md:grid-cols-{{ section.settings.columns_desktop }}">
+      {%- for product in collection.products limit: 4 -%}
+        {% if product.available %}
+          <li>
+            {% render 'card-product', card_product: product, lazy_load: true %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <div class="text-center">
+      {% render 'btn-link', btn_link: '/collections/all', btn_link_text: 'VIEW ALL' %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Top プロダクト flex",
+  "class": "topProductFlex",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "collection",
+      "label": "コレクション",
+      "default": "all-products"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "headline",
+      "default": "Best Selling"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "column num for desktop"
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2,
+      "label": "column num for mobile"
+    }
+  ],
+  "presets": [
+    {
+      "category": "top",
+      "name": "Top プロダクト flex"
+    }
+  ]
+}
+{% endschema %}

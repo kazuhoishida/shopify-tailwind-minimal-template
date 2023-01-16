@@ -1,0 +1,108 @@
+{% style %}
+  #map-section {
+    --color-bg: {{ section.settings.color_bg }};
+    --color-text: {{ section.settings.color_text }};
+    --iframe-map-aspect: {{ section.settings.iframe_aspect }};
+    --grid-gap-s: {{ section.settings.map_column_gap | times: 0.75 | round: 0 }}px;
+    --grid-gap: {{ section.settings.map_column_gap }}px;
+    --grid-p-s: {{ section.settings.section-padding | times: 0.75 | round: 0 }}px;
+    --grid-p: {{ section.settings.section-padding }}px;
+  }
+{% endstyle %}
+
+<div id="map-section" class="py-[var(--grid-p-s)] md:py-[var(--grid-p)] [background:var(--color-bg)] [color:var(--color-text)]">
+  <div class="w-page-mobile mx-auto grid gap-[var(--grid-gap-s)] md:gap-[var(--grid-gap)] grid-cols-1 md:grid-cols-2 ">
+    <div>
+      {% unless section.settings.map_heading == blank %}
+        <h2 class="mb-10">{{ section.settings.map_heading }}</h2>
+      {% endunless %}
+      {% unless section.settings.map_description == blank %}
+        <div class="[&>*]:pb-4">{{ section.settings.map_description }}</div>
+      {% endunless %}
+    </div>
+
+    {% if section.settings.map_address != blank %}
+      <div class="[&>iframe]:w-full [&>iframe]:h-auto [&>iframe]:aspect-[var(--iframe-map-aspect)] {% if section.settings.grayscale_map %}grayscale{% endif %}">
+        {{ section.settings.map_address }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "section-map",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "map_heading",
+      "label": "map heading",
+      "default": "Our Shop"
+    },
+    {
+      "type": "richtext",
+      "id": "map_description",
+      "label": "map description",
+      "default": "<p>Example address</p>"
+    },
+    {
+      "type": "html",
+      "id": "map_address",
+      "label": "map address (iframe)",
+      "default": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.4771653383423!2d139.7099034152463!3d35.66525108019804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c9fee70f285%3A0x4054b8b23563631c!2sOmote-Sando%20Station!5e0!3m2!1sen!2sjp!4v1652955096709!5m2!1sen!2sjp\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+    },
+    {
+      "type": "text",
+      "id": "iframe_aspect",
+      "label": "地図の縦横比 (width/height)",
+      "default": "16/9"
+    },
+    {
+      "type": "range",
+      "id": "map_column_gap",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 50,
+      "label": "grid gap"
+    },
+    {
+      "type": "range",
+      "id": "section-padding",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 30,
+      "label": "section padding y"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "background color",
+      "default": "#f2f2f2"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "text color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "grayscale_map",
+      "default": false,
+      "label": "grayscale filter of map"
+    }
+  ],
+  "presets": [
+    {
+      "category": "section",
+      "name": "Section map"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,91 @@
+{% style %}
+  #top-product-grid {
+    --columns-mobile: repeat({{ section.settings.columns_mobile }}, minmax(0, 1fr));
+    --columns-desktop: repeat({{ section.settings.columns_desktop }}, minmax(0, 1fr));
+    --product-flex-bg: {{ section.settings.color_bg }};
+    --product-flex-text-color: {{ section.settings.color_text }};
+  }
+{% endstyle %}
+
+<div id="top-product-grid" class="py-section-my [background:var(--product-flex-bg)] [color:var(--product-flex-text-color)]">
+  <div class="w-page-mobile mx-auto ">
+    {% if section.settings.headline != blank %}
+      <h2 class="mb-4">{{ section.settings.headline }}</h2>
+    {% endif %}
+    {% assign collection = collections[section.settings.collection] %}
+    <ul class="grid gap-[1px] p-[1px] [background:var(--product-flex-text-color)] grid-cols-[var(--columns-sp)] md:grid-cols-[var(--columns-desktop)]">
+      {%- for product in collection.products limit: 3 -%}
+        {% if product.available %}
+          <li class="p-8 [background:var(--product-flex-bg)]">
+            {% render 'card-product', card_product: product, lazy_load: true %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Top プロダクト grid",
+  "class": "topProductGrid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "collection",
+      "label": "コレクション",
+      "default": "all-products"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "headline",
+      "default": "Best Selling"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "label": "column num for desktop"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "2",
+      "label": "t:sections.main-collection-product-grid.settings.columns_mobile.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.main-collection-product-grid.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.main-collection-product-grid.settings.columns_mobile.options__2.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "top",
+      "name": "Top プロダクト grid"
+    }
+  ]
+}
+{% endschema %}

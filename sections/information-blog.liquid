@@ -1,0 +1,35 @@
+{%- paginate blog.articles by section.settings.number_pagination -%}
+  <div class="w-page-mobile mx-auto pt-20">
+    {% render 'blog-page-title', title: blog.title %}
+    
+    <ul class="mb-8">
+      {% for article in blog.articles %}
+        {% render 'blog-news-card', article: article %}
+      {% endfor %}
+    </ul>
+
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-blog.settings.header.content"
+    },
+    {
+      "type": "number",
+      "id": "number_pagination",
+      "label": "1ページあたりの表示数",
+      "default": 7
+    }
+  ]
+}
+{% endschema %}

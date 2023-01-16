@@ -1,0 +1,3 @@
+{%- for media in product.media -%}
+  <link rel="preload" as="image" href="{{ media.preview_image | image_url }}" />
+{%- endfor -%}

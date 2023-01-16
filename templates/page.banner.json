@@ -1,0 +1,92 @@
+{
+  "sections": {
+    "banner-full-img": {
+      "type": "banner-full-img",
+      "settings": {
+        "full_bg_image": "shopify:\/\/shop_images\/nav_three_program.jpg",
+        "bg_image_opacity": 85,
+        "color_bg": "#000000",
+        "title": "Banner Full Image",
+        "headline": "dummy headline",
+        "banner_desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dapibus turpis. Donec justo leo, varius sit amet viverra vitae, egestas eu odio.<\/p>",
+        "button_url": "\/",
+        "button_label": "VIEW MORE",
+        "color_text": "#ffffff"
+      }
+    },
+    "banner-half-img": {
+      "type": "banner-half-img",
+      "settings": {
+        "half_cover_image": "shopify:\/\/shop_images\/nav_mindful_beauty.jpg",
+        "title": "Banner Half Image",
+        "headline": "dummy headline",
+        "banner_desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dapibus turpis. Donec justo leo, varius sit amet viverra vitae, egestas eu odio.<\/p>",
+        "button_url": "\/",
+        "button_label": "VIEW MORE",
+        "section_reverse": false
+      }
+    },
+    "banner-multiple-img": {
+      "type": "banner-multiple-img",
+      "settings": {
+        "banner_image_01": "shopify:\/\/shop_images\/S-T00900_LL.jpg",
+        "banner_image_02": "shopify:\/\/shop_images\/S-T05200_LL.jpg",
+        "title": "Multiple Images",
+        "headline": "dummy headline",
+        "banner_desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dapibus turpis. Donec justo leo, varius sit amet viverra vitae, egestas eu odio.<\/p>",
+        "button_url": "\/",
+        "button_label": "VIEW MORE",
+        "section_margin": 70,
+        "section_reverse": false
+      }
+    },
+    "banner-grid": {
+      "type": "banner-grid",
+      "settings": {
+        "grid_cover_image": "shopify:\/\/shop_images\/nav_mindful_fragrance.jpg",
+        "title": "Banner Grid",
+        "headline": "dummy headline",
+        "banner_desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dapibus turpis. Donec justo leo, varius sit amet viverra vitae, egestas eu odio.<\/p>",
+        "button_url": "\/",
+        "button_label": "VIEW MORE",
+        "grid-inset-padding": 20,
+        "section_reverse": true
+      }
+    },
+    "banner-block-links": {
+      "type": "banner-block-links",
+      "blocks": {
+        "501ac51f-15da-4597-ae3e-68768c129fae": {
+          "type": "banner_image",
+          "settings": {
+            "link_image": "shopify:\/\/shop_images\/Group_663.jpg",
+            "link_url": "shopify:\/\/pages\/contact"
+          }
+        },
+        "ba85e35f-9103-4704-a110-0ba1f98f2399": {
+          "type": "banner_image",
+          "settings": {
+            "link_image": "shopify:\/\/shop_images\/Group_663.jpg",
+            "link_url": "shopify:\/\/collections\/all-products"
+          }
+        }
+      },
+      "block_order": [
+        "501ac51f-15da-4597-ae3e-68768c129fae",
+        "ba85e35f-9103-4704-a110-0ba1f98f2399"
+      ],
+      "settings": {
+        "color_bg": "#f2f2f2",
+        "padding-y": 30,
+        "grid-gap": 20
+      }
+    }
+  },
+  "order": [
+    "banner-full-img",
+    "banner-half-img",
+    "banner-multiple-img",
+    "banner-grid",
+    "banner-block-links"
+  ]
+}

@@ -1,0 +1,20 @@
+{% if product.metafields.my_fields.styling.value != blank and product.metafields.my_fields.styling2.value != blank %}
+  <div class="bg-light-gray py-20 mt-40 mt-0 text-center">
+    <h3 class="text-40">STYLING</h3>
+    <p class="text-12  mb-20">着用アイテム</p>
+    <ul class="grid grid-cols-2 gap-10 justify-center w-1/2 mx-auto w-full m-0 px-[8vw]">
+      {% if product.metafields.my_fields.styling.value != blank %}
+        {% assign styling_product_1 =  product.metafields.my_fields.styling.value %}
+        <li class="w-full">
+          {% render 'card-product', card_product: styling_product_1, lazy_load: true %}
+        </li>
+      {% endif %}
+      {% if product.metafields.my_fields.styling2.value != blank %}
+        {% assign styling_product_2 =  product.metafields.my_fields.styling2.value %}
+        <li class="w-full">
+          {% render 'card-product', card_product: styling_product_2, lazy_load: true %}
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+{% endif %}

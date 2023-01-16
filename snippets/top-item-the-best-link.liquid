@@ -1,0 +1,10 @@
+<ul class="topItemTheBestUl">
+  <li class="topItemTheBestList">
+    <a href="/collections/all" title="all">ALL</a>
+  </li>
+  {% for product_type in shop.types %}
+    <li class="topItemTheBestList">
+      <a href="/collections/all?filter.p.product_type={{ product_type }}" title="{{ product_type }}">{{ product_type }}</a>
+    </li>
+  {% endfor %}
+</ul>

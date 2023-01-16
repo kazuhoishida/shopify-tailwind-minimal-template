@@ -1,0 +1,87 @@
+{
+  "sections": {
+    "top-fv-2columns": {
+      "type": "top-fv-2columns",
+      "blocks": {
+        "dc27b557-6a8c-4253-8f99-43cbf4ad376b": {
+          "type": "fv_2columns_section",
+          "settings": {
+            "cover_image": "shopify://shop_images/8dab1dbf35fca43e83a951e6c8eb71624688554b.jpg",
+            "title": "MEN",
+            "headline": "2021 SS Collection",
+            "url": "/"
+          }
+        },
+        "adfcb8cc-cf7c-4a60-9bbe-38bdc405ac05": {
+          "type": "fv_2columns_section",
+          "settings": {
+            "cover_image": "shopify://shop_images/3c108a192c0f2dcead69a6c7917c70649aca071e_Sans_titre_5.png",
+            "title": "WOMEN",
+            "headline": "2021 SS Collection",
+            "url": "/"
+          }
+        }
+      },
+      "block_order": ["dc27b557-6a8c-4253-8f99-43cbf4ad376b", "adfcb8cc-cf7c-4a60-9bbe-38bdc405ac05"],
+      "settings": {}
+    },
+    "top-product-flex": {
+      "type": "top-product-flex",
+      "settings": {
+        "collection": "all-products",
+        "headline": "Best Selling",
+        "color_bg": "#000000",
+        "color_text": "#FFFFFF",
+        "columns_desktop": 4,
+        "columns_mobile": 2
+      }
+    },
+    "top-product-grid": {
+      "type": "top-product-grid",
+      "settings": {
+        "collection": "all-products",
+        "headline": "Best Selling"
+      }
+    },
+    "section-map": {
+      "type": "section-map",
+      "settings": {
+        "map_heading": "Our Shop",
+        "map_description": "<p>株式会社</p>"
+      }
+    },
+    "banner-multiple-img": {
+      "type": "banner-multiple-img",
+      "settings": {
+        "banner_image_01": "shopify://shop_images/nav_cleansing.png",
+        "banner_image_02": "shopify://shop_images/nav_room.png",
+        "title": "Multiple Images",
+        "headline": "dummy headline",
+        "banner_desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dapibus turpis. Donec justo leo, varius sit amet viverra vitae, egestas eu odio.</p>",
+        "button_url": "/"
+      }
+    },
+    "section-news-normal": {
+      "type": "section-news-normal",
+      "settings": {
+        "title": "News",
+        "number_to_show": 3
+      }
+    },
+    "banner-half-img": {
+      "type": "banner-half-img",
+      "settings": {
+        "half_cover_image": "shopify://shop_images/nav_mindful_beauty.jpg",
+        "title": "Banner Half Image",
+        "headline": "dummy headline",
+        "banner_desc": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dapibus turpis. Donec justo leo, varius sit amet viverra vitae, egestas eu odio.</p>",
+        "button_url": "/"
+      }
+    },
+    "section-video": {
+      "type": "video",
+      "settings": {}
+    }
+  },
+  "order": ["section-video", "section-map", "top-fv-2columns", "top-product-flex", "top-product-grid", "banner-multiple-img", "section-news-normal", "banner-half-img"]
+}
