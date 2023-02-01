@@ -4,7 +4,7 @@ Shopify theme bootstraped with Liquid / tailwindcss.
 
 ### Tech Stack
 
-tailwind, postCSS, vanillaJS, ESBuild, preact
+tailwind, postCSS, vanillaJS, ESBuild
 
 ### Development
 
