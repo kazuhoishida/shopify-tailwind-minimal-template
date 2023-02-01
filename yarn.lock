@@ -839,20 +839,10 @@ globby@^12.0.0:
     merge2 "^1.4.1"
     slash "^4.0.0"
 
-goober@^2.1.8:
-  version "2.1.8"
-  resolved "https://registry.yarnpkg.com/goober/-/goober-2.1.8.tgz#e592c04d093cb38f77b38cfcb012b7811c85765e"
-  integrity sha512-S0C85gCzcfFCMSdjD/CxyQMt1rbf2qEg6hmDzxk2FfD7+7Ogk55m8ZFUMtqNaZM4VVX/qaU9AzSORG+Gf4ZpAQ==
-
 graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   version "4.2.9"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.9.tgz#041b05df45755e587a24942279b9d113146e1c96"
   integrity sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==
-
-gsap@^3.9.1:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.9.1.tgz#d4c7443540497afee9ddc0824fd0180224e33360"
-  integrity sha512-JSGVYoC6da4pIjdF/yxFU6Rz8OojOIDkbooveZlfNg0+JIoFoRruyfWAEi6R/gUeNcuOiTqUIb0gi1nCNrHf8w==
 
 has-bigints@^1.0.1:
   version "1.0.1"
@@ -1033,11 +1023,6 @@ isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
-
-jotai@^1.6.3:
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/jotai/-/jotai-1.6.3.tgz#225c278bf963400b2c29ff1e2fa4825dca488772"
-  integrity sha512-XwOZyHPwGdt7yQKM7EGHvXWF09LP/dGkEln+4tXgECNxKrmv9k7eFpzblNvO4G8xEusdj/qWhh2AlG+I0fC6mg==
 
 json-parse-better-errors@^1.0.1:
   version "1.0.2"
