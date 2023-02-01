@@ -153,14 +153,18 @@ function focusVisiblePolyfill() {
   window.addEventListener("mousedown", (event) => {
     mouseClick = true;
   });
-  window.addEventListener("focus", () => {
-    if (currentFocusedElement)
-      currentFocusedElement.classList.remove("focused");
-    if (mouseClick)
-      return;
-    currentFocusedElement = document.activeElement;
-    currentFocusedElement.classList.add("focused");
-  }, true);
+  window.addEventListener(
+    "focus",
+    () => {
+      if (currentFocusedElement)
+        currentFocusedElement.classList.remove("focused");
+      if (mouseClick)
+        return;
+      currentFocusedElement = document.activeElement;
+      currentFocusedElement.classList.add("focused");
+    },
+    true
+  );
 }
 window.focusVisiblePolyfill = focusVisiblePolyfill;
 function pauseAllMedia() {

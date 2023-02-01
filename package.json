@@ -26,9 +26,6 @@
   },
   "dependencies": {
     "cssnano": "^5.1.7",
-    "goober": "^2.1.8",
-    "swiper": "^8.0.6",
-    "ts-migrate": "^0.1.35",
     "typescript": "^4.9.5"
   }
 }
