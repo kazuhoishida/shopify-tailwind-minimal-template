@@ -60,7 +60,6 @@
 }
 
 /* Customer Table */
-
 .customer table {
   table-layout: auto;
   border-collapse: collapse;
@@ -109,7 +108,6 @@
 }
 
 .customer td:empty {
-  display: inline;
   display: initial;
 }
 
@@ -210,7 +208,6 @@
 }
 
 /* works around colspan phantom border issues */
-
 .customer thead::after,
 .customer tfoot::before {
   content: " ";
@@ -230,7 +227,6 @@
 }
 
 /* mobile table overrides */
-
 @media screen and (max-width: 749px) {
   .customer thead,
   .customer th,
@@ -267,7 +263,6 @@
 }
 
 /* Pagination */
-
 .customer .pagination {
   margin-top: 5rem;
   margin-bottom: 7rem;
@@ -334,11 +329,9 @@
 }
 
 /* Login */
-
 .login a {
   display: block;
   margin: 0 auto;
-  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -407,42 +400,27 @@
 }
 
 /* Account/Order */
-
-.account {
-  margin: 6rem auto 9rem;
-  max-width: var(--page-width);
-  padding: 0 2rem;
-}
-
-.order {
+:is(.account, .order) {
   margin: 6rem auto 9rem;
   max-width: var(--page-width);
   padding: 0 2rem;
 }
 
 @media screen and (min-width: 750px) {
-  .account {
-    padding: 0 5rem;
-  }
-  .order {
+  :is(.account, .order) {
     padding: 0 5rem;
   }
 }
 
 @media screen and (min-width: 990px) {
-  .account > div:nth-of-type(2) {
+  :is(.account, .order) > div:nth-of-type(2) {
     display: flex;
     margin-top: 5rem;
   }
-  .order > div:nth-of-type(2) {
-    display: flex;
-    margin-top: 5rem;
-  }
-  .account > div:nth-of-type(2) > div:first-of-type {
-    flex-grow: 1;
-    padding-right: 3.2rem;
-  }
-  .order > div:nth-of-type(2) > div:first-of-type {
+}
+
+@media screen and (min-width: 990px) {
+  :is(.account, .order) > div:nth-of-type(2) > div:first-of-type {
     flex-grow: 1;
     padding-right: 3.2rem;
   }
@@ -458,39 +436,22 @@
   }
 }
 
-.account p {
+:is(.account, .order) p {
   margin: 0 0 2rem;
   font-size: 1.6rem;
 }
 
-.order p {
-  margin: 0 0 2rem;
-  font-size: 1.6rem;
-}
-
-.account h1 {
+:is(.account, .order) h1 {
   margin-bottom: 1rem;
 }
 
-.order h1 {
-  margin-bottom: 1rem;
-}
-
-.account h2 {
-  margin-top: 4rem;
-  margin-bottom: 1rem;
-}
-
-.order h2 {
+:is(.account, .order) h2 {
   margin-top: 4rem;
   margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 990px) {
-  .account h2 {
-    margin-top: 0;
-  }
-  .order h2 {
+  :is(.account, .order) h2 {
     margin-top: 0;
   }
 }
@@ -587,7 +548,6 @@
 }
 
 .order .fulfillment {
-  width: -moz-fit-content;
   width: fit-content;
   border: 0.01rem solid rgba(var(--color-foreground), 0.2);
   padding: 1rem;
@@ -691,7 +651,6 @@
 }
 
 /* Addresses */
-
 .addresses li > button {
   margin-left: 0.5rem;
   margin-right: 0.5rem;

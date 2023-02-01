@@ -3,24 +3,38 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="">
 <link rel="canonical" href="{{ canonical_url }}">
-<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-<link rel="stylesheet" href="https://use.typekit.net/cpv8ptn.css">
+<link
+  rel="preconnect"
+  href="https://cdn.shopify.com"
+  crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin>
 
 {%- if settings.favicon != blank -%}
-  <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  <link
+    rel="icon"
+    type="image/png"
+    href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
 {%- endif -%}
 
 {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
-  <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+  <link
+    rel="preconnect"
+    href="https://fonts.shopifycdn.com"
+    crossorigin>
 {%- endunless -%}
 
 <title>
   {{ page_title }}
-  {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-  {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-  {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  {%- if current_tags %}
+    &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+  {%- if current_page != 1 %}
+    &ndash; Page {{ current_page }}{% endif -%}
+  {%- unless page_title contains shop.name %}
+    &ndash; {{ shop.name }}{% endunless -%}
 </title>
 
 {% if page_description %}
@@ -31,20 +45,24 @@
 
 {% comment %} styles {% endcomment %}
 {% render 'global-css-variables' %}
-{{ 'base.css' | asset_url | stylesheet_tag }}
 {{ 'tailwind.css' | asset_url | stylesheet_tag }}
-{{ 'policy.css' | asset_url | stylesheet_tag }}
 
 {%- unless settings.type_body_font.system? -%}
-  <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+  <link
+    rel="preload"
+    as="font"
+    href="{{ settings.type_body_font | font_url }}"
+    type="font/woff2"
+    crossorigin>
 {%- endunless -%}
 {%- unless settings.type_header_font.system? -%}
-  <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+  <link
+    rel="preload"
+    as="font"
+    href="{{ settings.type_header_font | font_url }}"
+    type="font/woff2"
+    crossorigin>
 {%- endunless -%}
-
-{%- if settings.predictive_search_enabled -%}
-  <link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}" media="print" onload="this.media='all'">
-{%- endif -%}
 
 <script>
   document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
@@ -54,12 +72,3 @@
 </script>
 
 <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-
-{% comment %} swiper {% endcomment %}
-{{ '//unpkg.com/swiper/swiper-bundle.min.css' | stylesheet_tag }}
-{{ '//unpkg.com/swiper/swiper-bundle.min.js' | script_tag }}
-
-{% comment %} load this script only for contact form {% endcomment %}
-{% if template == 'page.contact' %}
-  {% render 'globo.formbuilder.scripts' %}
-{% endif %}

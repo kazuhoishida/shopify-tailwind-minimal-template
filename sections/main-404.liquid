@@ -1,11 +1,11 @@
-<div class="w-page-mobile mx-auto text-center py-[15vh]">
+<div>
   <h1>
     {{ 'templates.404.title' | t }}
   </h1>
-  <div class="text-center md:text-left">
+  <div>
     {% assign link = routes.all_products_collection_url %}
     {% assign label = 'general.continue_shopping' | t %}
-    
+
     {% render 'btn-link', btn_link: link, btn_link_text: label %}
   </div>
 </div>

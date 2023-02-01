@@ -1,4 +1,4 @@
-// src/js/shopify/_Common.ts
+// src/ts/shopify/_Common.ts
 if (typeof window.Shopify == "undefined") {
   window.Shopify = {};
 }
@@ -208,7 +208,7 @@ window.debounce = debounce;
 function fetchConfig(type = "json") {
   return {
     method: "POST",
-    headers: { "Content-Type": "application/json", "Accept": `application/${type}` }
+    headers: { "Content-Type": "application/json", Accept: `application/${type}` }
   };
 }
 window.fetchConfig = fetchConfig;

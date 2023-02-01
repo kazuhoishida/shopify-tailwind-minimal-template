@@ -2,10 +2,11 @@
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
     {{ content_for_header }}
-    {% render 'globo.formbuilder.scripts' %}
     {% render 'theme-head' %}
     {% if product and product.media %}
-      {%- render 'preload-product-image' -%}
+      {%- for media in product.media -%}
+        <link rel="preload" as="image" href="{{ media.preview_image | image_url }}" />
+      {%- endfor -%}    
     {% endif %}
   </head>
 
@@ -14,11 +15,13 @@
       {{ "accessibility.skip_to_text" | t }}
     </a>
 
-    {% section 'announcement' %}
-
     {% section 'header' %}
 
-    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+    <main
+      id="MainContent"
+      class="content-for-layout focus-none"
+      role="main"
+      tabindex="-1">
       {{ content_for_layout }}
     </main>
 
@@ -45,22 +48,15 @@
       window.variantStrings = {
         addToCart: `{{ 'products.product.add_to_cart' | t }}`,
         soldOut: `{{ 'products.product.sold_out' | t }}`,
-        unavailable: `{{ 'products.product.unavailable' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`
       }
 
       window.accessibilityStrings = {
         imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
         shareSuccess: `{{ 'general.share.success_message' | t }}`,
         pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
-        playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
+        playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`
       }
     </script>
-
-    {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
-    <script src="{{ 'common.js' | asset_url }}"></script>
-    <script src="{{ 'gsap.min.js' | asset_url }}"></script>
-    <script src="{{ 'ScrollTrigger.min.js' | asset_url }}"></script>
   </body>
 </html>
