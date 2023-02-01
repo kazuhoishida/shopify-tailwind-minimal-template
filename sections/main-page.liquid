@@ -26,22 +26,6 @@
   </div>
 </div>
 
-<script>
-// 最初にformbuilderのショートコードが一瞬見えてしまうため、フォームが読み込まれてからページを表示する
-const container = document.querySelector('.rte')
-
-const formFadeIn = () => {
-  const form = document.querySelector('.globo-formbuilder')
-
-  if(form != null) {
-    container.style.opacity = 1
-    clearInterval(intervalID)
-  }
-}
-
-const intervalID = setInterval(formFadeIn, 300)
-</script>
-
 {% schema %}
 {
   "name": "t:sections.main-page.name",

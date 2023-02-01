@@ -58,8 +58,3 @@
 {% comment %} swiper {% endcomment %}
 {{ '//unpkg.com/swiper/swiper-bundle.min.css' | stylesheet_tag }}
 {{ '//unpkg.com/swiper/swiper-bundle.min.js' | script_tag }}
-
-{% comment %} load this script only for contact form {% endcomment %}
-{% if template == 'page.contact' %}
-  {% render 'globo.formbuilder.scripts' %}
-{% endif %}

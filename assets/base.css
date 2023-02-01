@@ -3191,52 +3191,6 @@ details-disclosure > details {
   opacity: 0.6 !important;
 }
 
-/* contact form */
-
-.globo-form-app {
-  margin-top: 0 !important;
-}
-
-.globo-form-app.boxed-layout {
-  box-shadow: none !important;
-}
-
-.globo-form-id-75261 .globo-form-app .footer button.submit,
-.globo-form-id-75261 .globo-form-app .footer button.checkout,
-.globo-form-id-75261 .globo-form-app .footer button.action.loading .spinner {
-  background-color: #828ca3 !important;
-}
-
-.globo-form-app .globo-form-control input,
-.globo-form-app .globo-form-control textarea,
-.globo-form-app .globo-form-control select {
-  background-color: transparent !important;
-  box-shadow: none !important;
-  border: 1px solid #828ca3 !important;
-}
-
-.globo-form-id-75261 .globo-form-app .footer button {
-  border: none !important;
-}
-
-.globo-form-id-75261 .globo-form-app .globo-label,
-.globo-form-id-75261 .globo-form-app .globo-form-control label.globo-label,
-.globo-form-id-75261 .globo-form-app .globo-form-control label.globo-label span.label-content {
-  color: #828ca3 !important;
-}
-
-@media (max-width: 739px) {
-  .globo-form-app .globo-form-control textarea {
-    height: 120px !important;
-  }
-}
-
-.globo-form-app .globo-form-control input,
-.globo-form-app .globo-form-control textarea,
-.globo-form-app .globo-form-control select {
-  caret-color: #828ca3 !important;
-}
-
 .hamburger-close {
   z-index: 9999999 !important;
 }

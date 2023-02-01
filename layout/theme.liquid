@@ -2,7 +2,7 @@
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
     {{ content_for_header }}
-{% include 'globo.formbuilder.scripts' %}
+    
     {% render 'theme-head' %}
     {% if product and product.media %}
       {%- render 'preload-product-image' -%}
