@@ -78,6 +78,7 @@
     padding-top: 1.5rem;
   }
 }
+
 .footer__column {
   width: 100%;
   align-items: flex-end;
@@ -356,7 +357,8 @@ noscript .localization-selector.link {
 .localization-selector + .disclosure__list-wrapper {
   margin-left: 1rem;
   opacity: 1;
-  animation: animateLocalization var(--duration-default) ease;
+  -webkit-animation: animateLocalization var(--duration-default) ease;
+          animation: animateLocalization var(--duration-default) ease;
 }
 
 @media screen and (min-width: 750px) {
@@ -373,6 +375,17 @@ noscript .localization-selector.link {
 @media screen and (min-width: 750px) {
   .footer__copyright {
     text-align: right;
+  }
+}
+
+@-webkit-keyframes appear-down {
+  0% {
+    opacity: 0;
+    margin-top: -1rem;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
   }
 }
 
@@ -470,6 +483,18 @@ noscript .localization-selector.link {
   text-decoration: none;
 }
 
+@-webkit-keyframes animateLocalization {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-1rem);
+  }
+}
+
 @keyframes animateLocalization {
   0% {
     opacity: 0;
@@ -496,6 +521,7 @@ noscript .localization-selector.link {
 }
 
 /* check for flexbox gap in older Safari versions */
+
 @supports not (inset: 10px) {
   /* @media screen and (max-width: 749px) {
     .footer .grid {

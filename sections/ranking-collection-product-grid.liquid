@@ -18,7 +18,6 @@
 
 <div id="ranking-collection-product-grid" class="pt-[var(--sec-pt)] pb-[var(--sec-pb)] md:pt-[var(--sec-pt-s)] md:pb-[var(--sec-pb-s)] w-9/10 mx-auto">
   {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
-    {{ 'component-facets.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
   
     <div class="page-width" id="main-collection-filters" data-id="{{ section.id }}">

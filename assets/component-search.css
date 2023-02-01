@@ -7,6 +7,11 @@
   top: var(--inputs-border-width);
 }
 
+.search__button.focus-visible {
+  background-color: rgb(var(--color-background));
+  z-index: 2;
+}
+
 .search__button:focus-visible {
   background-color: rgb(var(--color-background));
   z-index: 2;
@@ -15,6 +20,11 @@
 .search__button:focus {
   background-color: rgb(var(--color-background));
   z-index: 2;
+}
+
+.search__button:not(.focus-visible):not(.focused){
+  box-shadow: inherit;
+  background-color: inherit;
 }
 
 .search__button:not(:focus-visible):not(.focused){
@@ -28,6 +38,7 @@
 }
 
 /* Remove extra spacing for search inputs in Safari */
+
 input::-webkit-search-decoration {
   -webkit-appearance: none;
 }

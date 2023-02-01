@@ -91,6 +91,7 @@ table tr td {
 }
 
 /* FAQ */
+
 .question-block-icon::before,
 .question-block-icon::after {
   content: "";
@@ -111,6 +112,7 @@ table tr td {
   opacity: 1;
   transition: opacity 0.25s ease-out;
 }
+
 .question-block-icon.--enable::after {
   opacity: 0;
   transition: opacity 0.25s ease-out;
@@ -123,6 +125,7 @@ table tr td {
 .question-block-answer {
   display: none;
 }
+
 .question-block-answer .--open {
   display: block;
 }

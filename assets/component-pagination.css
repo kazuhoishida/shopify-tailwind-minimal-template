@@ -21,11 +21,14 @@
 
 .pagination__list > li:not(:last-child) {
   margin-right: 1rem;
-
-  @media screen and (max-width: 768px) {
-    margin-right: 0;
-  }
 }
+
+@media screen and (max-width: 768px) {
+
+.pagination__list > li:not(:last-child) {
+    margin-right: 0
+}
+  }
 
 .pagination__item {
   /* color: rgb(var(--color-foreground)); */

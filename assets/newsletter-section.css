@@ -39,6 +39,8 @@
 
 .newsletter__button {
   margin-top: 3rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
 }
 

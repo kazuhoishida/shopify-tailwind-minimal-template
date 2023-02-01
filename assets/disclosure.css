@@ -37,6 +37,8 @@
   max-height: 19rem;
   max-width: 22rem;
   min-width: 12rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
 }
 

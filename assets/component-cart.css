@@ -82,6 +82,8 @@ cart-items {
 }
 
 .cart__note {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
 }
 

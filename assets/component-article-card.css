@@ -129,6 +129,7 @@
 }
 
 /* check for flexbox gap in older Safari versions */
+
 /* @supports not (inset: 10px) {
   .articles-wrapper.grid {
     margin: 0 0 5rem 0;

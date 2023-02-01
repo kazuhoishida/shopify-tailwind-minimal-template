@@ -6,6 +6,7 @@
 }
 
 .rich-text.rich-text--full-width {
+  max-width: none;
   max-width: initial;
   width: 100%;
 }
@@ -17,7 +18,7 @@
 }
 
 .rich-text__blocks * {
-  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .rich-text--full-width .rich-text__blocks {

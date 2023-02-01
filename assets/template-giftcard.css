@@ -4,7 +4,6 @@
 *::after {
   box-sizing: inherit;
 }
-
 a:empty,
 ul:empty,
 dl:empty,
@@ -20,13 +19,11 @@ h5:empty,
 h6:empty {
   display: none;
 }
-
 html {
   font-size: calc(var(--font-body-scale) * 62.5%);
   box-sizing: border-box;
   height: 100%;
 }
-
 body {
   background-color: rgb(var(--color-base-background-1));
   color: rgb(var(--color-base-text));
@@ -41,7 +38,6 @@ body {
   font-style: var(--font-body-style);
   font-weight: var(--font-body-weight);
 }
-
 @media only screen and (min-width: 750px) {
   body {
     font-size: 1.6rem;
@@ -49,11 +45,12 @@ body {
     padding: 0 5rem;
   }
 }
-
+::-moz-selection {
+  background-color: rgba(var(--color-base-text), 0.2);
+}
 ::selection {
   background-color: rgba(var(--color-base-text), 0.2);
 }
-
 h1,
 .h1,
 h2,
@@ -64,31 +61,26 @@ h2,
   letter-spacing: calc(var(--font-heading-scale) * 0.06rem);
   line-height: calc(1 + 0.3 / max(1, var(--font-heading-scale)));
 }
-
 h1,
 .h1 {
   font-size: calc(var(--font-heading-scale) * 3rem);
 }
-
 @media only screen and (min-width: 750px) {
   h1,
   .h1 {
     font-size: calc(var(--font-heading-scale) * 4rem);
   }
 }
-
 h2,
 .h2 {
   font-size: calc(var(--font-heading-scale) * 2rem);
 }
-
 @media only screen and (min-width: 750px) {
   h2,
   .h2 {
     font-size: calc(var(--font-heading-scale) * 2.4rem);
   }
 }
-
 .skip-to-content-link:focus {
   z-index: 9999;
   position: inherit;
@@ -97,7 +89,6 @@ h2,
   height: auto;
   clip: auto;
 }
-
 .link {
   cursor: pointer;
   display: inline-block;
@@ -110,11 +101,9 @@ h2,
   text-decoration: underline;
   color: rgb(var(--color-base-outline-button-labels));
 }
-
 .link:hover {
   color: rgba(var(--color-base-outline-button-labels), 0.75);
 }
-
 .button {
   font-family: inherit;
   cursor: pointer;
@@ -133,45 +122,42 @@ h2,
   letter-spacing: 0.1rem;
   line-height: calc(1 + 0.2 / var(--font-body-scale));
 }
-
+.button::-moz-selection {
+  background-color: rgba(var(--color-base-solid-button-labels), 0.3);
+}
 .button::selection {
   background-color: rgba(var(--color-base-solid-button-labels), 0.3);
 }
-
 .button:hover {
   box-shadow: 0 0 0 0.2rem rgb(var(--color-base-accent-1));
 }
-
 .button--secondary {
   color: rgb(var(--color-base-outline-button-labels));
   box-shadow: 0 0 0 0.1rem rgb(var(--color-base-outline-button-labels));
   background-color: transparent;
 }
-
+.button--secondary::-moz-selection {
+  background-color: rgba(var(--color-base-outline-button-labels), 0.3);
+}
 .button--secondary::selection {
   background-color: rgba(var(--color-base-outline-button-labels), 0.3);
 }
-
 .button--secondary:hover {
   box-shadow: 0 0 0 0.2rem rgb(var(--color-base-outline-button-labels));
 }
-
 .gift-card {
   padding-bottom: 3.4rem;
 }
-
 .gift-card__title {
   text-align: center;
   word-break: break-word;
   padding: 4rem 0 1.7rem;
 }
-
 @media only screen and (min-width: 990px) {
   .gift-card__title {
     padding: 6rem 0 2.6rem;
   }
 }
-
 .gift-card__image-wrapper {
   display: flex;
   justify-content: center;
@@ -181,31 +167,26 @@ h2,
   margin-bottom: 0.8rem;
   margin: 0 auto;
 }
-
 @media only screen and (min-width: 750px) {
   .gift-card__image-wrapper {
     margin-bottom: 0;
     width: 40rem;
   }
 }
-
 .gift-card__image {
   max-width: 100%;
   padding: 0 2rem;
   height: auto;
 }
-
 @media only screen and (min-width: 750px) {
   .gift-card__image {
     padding: 0;
   }
 }
-
 .gift-card__heading {
   font-weight: 400;
   margin: 2.5rem 0 1rem;
 }
-
 .gift-card__price {
   display: flex;
   align-items: center;
@@ -216,22 +197,18 @@ h2,
   line-height: calc(1 + 0.5 / var(--font-body-scale));
   opacity: 0.85;
 }
-
 .gift-card__price > p:first-child {
   margin-bottom: 1rem;
 }
-
 @media only screen and (min-width: 750px) {
   .gift-card__price {
     font-size: 2rem;
   }
 }
-
 .gift-card__label:not(.badge) {
   font-weight: 400;
   opacity: 0.7;
 }
-
 .gift-card__number {
   background-color: transparent;
   border: none;
@@ -243,23 +220,19 @@ h2,
   width: 100%;
   margin-bottom: 1rem;
 }
-
 @media only screen and (min-width: 750px) {
   .gift-card__number {
     font-size: 1.8rem;
   }
 }
-
 .gift-card__text {
   margin-bottom: 4rem;
   opacity: 0.7;
 }
-
 .gift-card__information {
   text-align: center;
   margin-top: 3rem;
 }
-
 .gift-card__label {
   font-size: 1.3rem;
   letter-spacing: 0.05rem;
@@ -267,7 +240,6 @@ h2,
   display: inline;
   margin-left: 1rem;
 }
-
 .badge {
   border: 1px solid transparent;
   margin: 1.7rem 0 1rem 1rem;
@@ -282,43 +254,35 @@ h2,
   border-color: rgba(var(--color-base-text), 0.04);
   color: rgb(var(--color-base-text));
 }
-
 .badge--inverse {
   background-color: rgb(var(--color-base-text));
   border-color: rgb(var(--color-base-text));
   color: rgb(var(--color-base-background-1));
 }
-
 .caption-large {
   font-size: 1.3rem;
   line-height: calc(1 + 0.5 / var(--font-body-scale));
   letter-spacing: 0.04rem;
 }
-
 .gift-card__copy-code {
   margin-bottom: 2.2rem;
 }
-
 .gift-card__qr-code {
   margin-top: 3rem;
 }
-
 @media only screen and (min-width: 750px) {
   .gift-card__qr-code {
     margin-top: 5rem;
   }
 }
-
 .gift-card__qr-code img {
   margin: 0 auto;
 }
-
 .gift_card__apple-wallet {
   line-height: 0;
   display: block;
   margin-bottom: 5rem;
 }
-
 .gift-card__buttons {
   display: flex;
   flex-direction: column;
@@ -326,29 +290,30 @@ h2,
   flex-wrap: wrap;
   margin: 0 auto;
 }
-
 .gift-card__buttons > .button:first-child {
   display: block;
   margin-bottom: 2rem;
 }
-
 /*
   Focus ring - default (with offset)
 */
-
 /* Fallback - for browsers that don't support :focus-visible, a fallback is set for :focus */
 *:focus {
   outline: 0;
   box-shadow: none;
 }
-
+*.focus-visible {
+  outline: 0.2rem solid rgba(var(--color-base-text), 0.5);
+  outline-offset: 0.3rem;
+  box-shadow: 0 0 0 0.3rem rgb(var(--color-base-background-1)),
+    0 0 0.5rem 0.4rem rgba(var(--color-base-text), 0.3);
+}
 *:focus-visible {
   outline: 0.2rem solid rgba(var(--color-base-text), 0.5);
   outline-offset: 0.3rem;
   box-shadow: 0 0 0 0.3rem rgb(var(--color-base-background-1)),
     0 0 0.5rem 0.4rem rgba(var(--color-base-text), 0.3);
 }
-
 /* Fallback - for browsers that don't support :focus-visible, a fallback is set for :focus */
 .focused, .no-js *:focus {
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
@@ -356,37 +321,45 @@ h2,
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
     0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 }
-
+.button.focus-visible {
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-base-accent-1)),
+    0 0 0 0.3rem rgb(var(--color-base-background-1)),
+    0 0 0.5rem 0.4rem rgba(var(--color-base-text), 0.3);
+}
 .button:focus-visible {
   box-shadow: 0 0 0 0.1rem rgb(var(--color-base-accent-1)),
     0 0 0 0.3rem rgb(var(--color-base-background-1)),
     0 0 0.5rem 0.4rem rgba(var(--color-base-text), 0.3);
 }
-
 /* Negate the fallback side-effect for browsers that support :focus-visible */
+.no-js *:focus:not(.focus-visible) {
+  outline: 0;
+  box-shadow: none;
+}
 .no-js *:focus:not(:focus-visible) {
   outline: 0;
   box-shadow: none;
 }
-
 .button:focus {
   box-shadow: 0 0 0 0.1rem rgb(var(--color-base-accent-1)),
     0 0 0 0.3rem rgb(var(--color-base-background-1)),
     0 0 0.5rem 0.4rem rgba(var(--color-base-text), 0.3);
 }
-
+.button--secondary.focus-visible {
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-base-outline-button-labels)),
+    0 0 0 0.3rem rgb(var(--color-base-background-1)),
+    0 0 0.5rem 0.4rem rgba(var(--color-base-text), 0.3);
+}
 .button--secondary:focus-visible {
   box-shadow: 0 0 0 0.1rem rgb(var(--color-base-outline-button-labels)),
     0 0 0 0.3rem rgb(var(--color-base-background-1)),
     0 0 0.5rem 0.4rem rgba(var(--color-base-text), 0.3);
 }
-
 .button--secondary:focus {
   box-shadow: 0 0 0 0.1rem rgb(var(--color-base-outline-button-labels)),
     0 0 0 0.3rem rgb(var(--color-base-background-1)),
     0 0 0.5rem 0.4rem rgba(var(--color-base-text), 0.3);
 }
-
 .form__message {
   align-items: center;
   display: flex;
@@ -395,20 +368,17 @@ h2,
   margin-top: 1rem;
   justify-content: center;
 }
-
 .form__message .icon {
   flex-shrink: 0;
   height: 1.3rem;
   margin-right: 0.5rem;
   width: 1.3rem;
 }
-
 @media print {
   .no-print {
     display: none;
   }
 }
-
 .gradient {
   background: rgb(var(--color-base-background-1));
   background: var(--gradient-base-background-1);

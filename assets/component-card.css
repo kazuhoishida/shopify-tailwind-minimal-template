@@ -86,12 +86,14 @@
 
 .card__content {
   display: grid;
+  grid-template-rows: minmax(0,1fr) -webkit-max-content minmax(0,1fr);
   grid-template-rows: minmax(0,1fr) max-content minmax(0,1fr);
   padding: 1rem;
   width: 100%;
 }
 
 .card__content--auto-margins {
+  grid-template-rows: minmax(0,auto) -webkit-max-content minmax(0,auto);
   grid-template-rows: minmax(0,auto) max-content minmax(0,auto);
 }
 
@@ -124,8 +126,10 @@
 
 .card__media .media img {
   height: 100%;
-  object-fit: cover;
-  object-position: center center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
   width: 100%;
 }
 
@@ -172,9 +176,19 @@
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
 }
 
+.card__heading a.focus-visible:after {
+  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+}
+
 .card__heading a:focus-visible:after {
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+}
+
+.card__heading a:focus:not(.focus-visible):after {
+  box-shadow: none;
+  outline: 0;
 }
 
 .card__heading a:focus:not(:focus-visible):after {

@@ -40,7 +40,8 @@ slider-component.slider-component-full-width {
     position: relative;
     flex-wrap: inherit;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scroll-padding-left: 1.5rem;
     -webkit-overflow-scrolling: touch;
@@ -67,7 +68,8 @@ slider-component.slider-component-full-width {
     position: relative;
     flex-wrap: inherit;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scroll-padding-left: 1rem;
     -webkit-overflow-scrolling: touch;
@@ -83,7 +85,8 @@ slider-component.slider-component-full-width {
     position: relative;
     flex-wrap: inherit;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scroll-padding-left: 1.5rem;
     -webkit-overflow-scrolling: touch;
@@ -109,7 +112,8 @@ slider-component.slider-component-full-width {
   position: relative;
   flex-wrap: inherit;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   margin-bottom: 1rem;
@@ -129,7 +133,8 @@ slider-component.slider-component-full-width {
     position: relative;
     flex-wrap: inherit;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     margin-bottom: 1rem;
@@ -219,6 +224,7 @@ slider-component.slider-component-full-width {
 }
 
 .no-js .slider::-webkit-scrollbar {
+  display: inline;
   display: initial;
 }
 

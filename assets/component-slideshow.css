@@ -92,7 +92,6 @@ slideshow-component .slideshow.banner {
   }
 }
 
-
 .slideshow:not(.banner--mobile-bottom) .slideshow__text-wrapper {
   height: 100%;
 }

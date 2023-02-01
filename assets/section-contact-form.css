@@ -28,9 +28,6 @@
   .contact__button {
     margin-top: 4rem;
   }
-}
-
-@media screen and (min-width: 750px) {
   .contact__fields {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

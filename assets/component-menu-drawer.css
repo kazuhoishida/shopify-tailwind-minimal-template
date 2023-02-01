@@ -1,4 +1,5 @@
 .header__icon--menu {
+  position: static;
   position: initial;
 }
 
@@ -9,6 +10,7 @@
   cursor: default;
   width: 100%;
   height: calc(100vh - 100%);
+  height: calc(100vh - (100%));
   height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
   top: 100%;
   left: 0;
@@ -39,8 +41,10 @@ menu-drawer > details[open] > summary::before {
   border-color: rgba(var(--color-foreground), var(--drawer-border-opacity));
   filter: drop-shadow(var(--drawer-shadow-horizontal-offset) var(--drawer-shadow-vertical-offset) var(--drawer-shadow-blur-radius) rgba(var(--color-shadow), var(--drawer-shadow-opacity)));
 }
+
 .js .menu-drawer {
   height: calc(100vh - 100%);
+  height: calc(100vh);
   height: calc(var(--viewport-height, 100vh));
 }
 
@@ -65,6 +69,7 @@ details[open].menu-opening > .menu-drawer__submenu {
     height: auto;
   }
 }
+
 @media screen and (min-width: 980px) {
   .menu-drawer {
     width: 25%;
@@ -244,6 +249,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   justify-content: flex-start;
   align-items: center;
 }
+
 .accordionBtn::after {
   content: "";
   background-image: url("./caret.svg");
@@ -255,9 +261,11 @@ details[open].menu-opening > .menu-drawer__submenu {
   transition: 0.2s ease-in-out;
   margin-left: 25%;
 }
+
 .accordionBtn.open::after {
   transform: rotate(180deg);
 }
+
 .accordionBtn.subCat::after {
   width: 10px;
   height: 5px;

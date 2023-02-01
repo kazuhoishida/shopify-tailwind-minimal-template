@@ -31,9 +31,6 @@
   .collapsible-content__media--large {
     height: 69.5rem;
   }
-}
-
-@media screen and (min-width: 750px) {
   .collapsible-content__grid--reverse {
     flex-direction: row-reverse;
   }
@@ -99,6 +96,7 @@
 }
 
 /* check for flexbox gap in older Safari versions */
+
 @supports not (inset: 10px) {
   @media screen and (min-width: 750px) {
     .collapsible-content__grid:not(.collapsible-content__grid--reverse) .grid__item:last-child,
