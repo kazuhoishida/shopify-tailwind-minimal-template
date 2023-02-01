@@ -249,25 +249,3 @@ details[open].menu-opening > .menu-drawer__submenu {
   justify-content: flex-start;
   align-items: center;
 }
-
-.accordionBtn::after {
-  content: "";
-  background-image: url("./caret.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 18px;
-  height: 9px;
-  display: inline-block;
-  transition: 0.2s ease-in-out;
-  margin-left: 25%;
-}
-
-.accordionBtn.open::after {
-  transform: rotate(180deg);
-}
-
-.accordionBtn.subCat::after {
-  width: 10px;
-  height: 5px;
-  margin-left: 15%;
-}
