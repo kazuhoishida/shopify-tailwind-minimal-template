@@ -8,5 +8,5 @@ postcss.config.js
 react-shim.js
 release-notes.md
 src
-tailwind.config.js
+tailwind.config.cjs
 yarn.lock

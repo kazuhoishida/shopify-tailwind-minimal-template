@@ -5,11 +5,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "run-p dev:*",
-    "dev:css": "postcss src/css/**/[^_]*.css --watch --dir assets --config postcss.config.js",
-    "dev:js": "node ./build.js",
+    "dev:css": "postcss src/css/**/[^_]*.css --watch --dir assets --config postcss.config.cjs",
+    "dev:js": "node ./build.cjs",
     "build": "run-p build:*",
-    "build:css": "NODE_ENV=PRODUCTION postcss src/css/**/[^_]*.css --no-map --dir assets --config postcss.config.js",
-    "build:js": "NODE_ENV=PRODUCTION node ./build.js"
+    "build:css": "NODE_ENV=PRODUCTION postcss src/css/**/[^_]*.css --no-map --dir assets --config postcss.config.cjs",
+    "build:js": "NODE_ENV=PRODUCTION node ./build.cjs"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
@@ -30,6 +30,8 @@
     "goober": "^2.1.8",
     "jotai": "^1.6.3",
     "preact": "^10.7.0",
-    "swiper": "^8.0.6"
+    "swiper": "^8.0.6",
+    "ts-migrate": "^0.1.35",
+    "typescript": "^4.9.5"
   }
 }
