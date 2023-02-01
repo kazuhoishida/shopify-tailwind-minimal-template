@@ -16,10 +16,6 @@
   }
 {%- endstyle -%}
 
-<!-- <div class="pt-32 pt-20 pb-40 w-page-mobile">
-  {% render 'category-menu', menulink: linklists.category-menu.links %}
-</div> -->
-
 <div id="ranking-collection-product-grid" class="pt-[var(--sec-pt)] pb-[var(--sec-pb)] md:pt-[var(--sec-pt-s)] md:pb-[var(--sec-pb-s)] w-9/10 mx-auto">
   {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
     {{ 'component-facets.css' | asset_url | stylesheet_tag }}
