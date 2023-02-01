@@ -1,4 +1,6 @@
 export class QuantityInput extends HTMLElement {
+  changeEvent: any;
+  input: any;
   constructor() {
     super();
     this.input = this.querySelector('input');
@@ -9,7 +11,7 @@ export class QuantityInput extends HTMLElement {
     );
   }
 
-  onButtonClick(event) {
+  onButtonClick(event: any) {
     event.preventDefault();
     const previousValue = this.input.value;
 

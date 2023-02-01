@@ -1,4 +1,7 @@
 export class VariantSelects extends HTMLElement {
+  currentVariant: any;
+  options: any;
+  variantData: any;
   constructor() {
     super();
     this.addEventListener('change', this.onVariantChange);
@@ -28,8 +31,8 @@ export class VariantSelects extends HTMLElement {
   }
 
   updateMasterId() {
-    this.currentVariant = this.getVariantData().find((variant) => {
-      return !variant.options.map((option, index) => {
+    this.currentVariant = this.getVariantData().find((variant: any) => {
+      return !variant.options.map((option: any, index: any) => {
         return this.options[index] === option;
       }).includes(false);
     });
@@ -40,10 +43,12 @@ export class VariantSelects extends HTMLElement {
     if (!this.currentVariant.featured_media) return;
 
     const mediaGallery = document.getElementById(`MediaGallery-${this.dataset.section}`);
+    // @ts-expect-error TS(2531): Object is possibly 'null'.
     mediaGallery.setActiveMedia(`${this.dataset.section}-${this.currentVariant.featured_media.id}`, true);
 
     const modalContent = document?.querySelector(`#ProductModal-${this.dataset.section} .product-media-modal__content`);
     const newMediaModal = modalContent?.querySelector( `[data-media-id="${this.currentVariant.featured_media.id}"]`);
+    // @ts-expect-error TS(2345): Argument of type 'Element | null | undefined' is n... Remove this comment to see the full error message
     modalContent?.prepend(newMediaModal);
   }
 
@@ -55,6 +60,7 @@ export class VariantSelects extends HTMLElement {
   updateShareUrl() {
     const shareButton = document.getElementById(`Share-${this.dataset.section}`);
     if (!shareButton) return;
+    // @ts-expect-error TS(2339): Property 'updateUrl' does not exist on type 'HTMLE... Remove this comment to see the full error message
     shareButton.updateUrl(`${window.shopUrl}${this.dataset.url}?variant=${this.currentVariant.id}`);
   }
 
@@ -62,7 +68,9 @@ export class VariantSelects extends HTMLElement {
     const productForms = document.querySelectorAll(`#product-form-${this.dataset.section}, #product-form-installment`);
     productForms.forEach((productForm) => {
       const input = productForm.querySelector('input[name="id"]');
+      // @ts-expect-error TS(2531): Object is possibly 'null'.
       input.value = this.currentVariant.id;
+      // @ts-expect-error TS(2531): Object is possibly 'null'.
       input.dispatchEvent(new Event('change', { bubbles: true }));
     });
   }
@@ -72,6 +80,7 @@ export class VariantSelects extends HTMLElement {
     if (!pickUpAvailability) return;
 
     if (this.currentVariant && this.currentVariant.available) {
+      // @ts-expect-error TS(2339): Property 'fetchAvailability' does not exist on typ... Remove this comment to see the full error message
       pickUpAvailability.fetchAvailability(this.currentVariant.id);
     } else {
       pickUpAvailability.removeAttribute('available');
@@ -84,6 +93,7 @@ export class VariantSelects extends HTMLElement {
     if (!section) return;
 
     const productForm = section.querySelector('product-form');
+    // @ts-expect-error TS(2339): Property 'handleErrorMessage' does not exist on ty... Remove this comment to see the full error message
     if (productForm) productForm.handleErrorMessage();
   }
 
@@ -101,11 +111,12 @@ export class VariantSelects extends HTMLElement {
         const price = document.getElementById(`price-${this.dataset.section}`);
 
         if (price) price.classList.remove('visibility-hidden');
+        // @ts-expect-error TS(2339): Property 'variantStrings' does not exist on type '... Remove this comment to see the full error message
         this.toggleAddButton(!this.currentVariant.available, window.variantStrings.soldOut);
       });
   }
 
-  toggleAddButton(disable = true, text, modifyClass = true) {
+  toggleAddButton(disable = true, text: any, modifyClass = true) {
     const productForm = document.getElementById(`product-form-${this.dataset.section}`);
     if (!productForm) return;
     const addButton = productForm.querySelector('[name="add"]');
@@ -115,9 +126,11 @@ export class VariantSelects extends HTMLElement {
 
     if (disable) {
       addButton.setAttribute('disabled', 'disabled');
+      // @ts-expect-error TS(2531): Object is possibly 'null'.
       if (text) addButtonText.textContent = text;
     } else {
       addButton.removeAttribute('disabled');
+      // @ts-expect-error TS(2531): Object is possibly 'null'.
       addButtonText.textContent = window.variantStrings.addToCart;
     }
 
@@ -130,11 +143,13 @@ export class VariantSelects extends HTMLElement {
     const addButtonText = button?.querySelector('[name="add"] > span');
     const price = document.getElementById(`price-${this.dataset.section}`);
     if (!addButton) return;
+    // @ts-expect-error TS(2533): Object is possibly 'null' or 'undefined'.
     addButtonText.textContent = window.variantStrings.unavailable;
     if (price) price.classList.add('visibility-hidden');
   }
 
   getVariantData() {
+    // @ts-expect-error TS(2531): Object is possibly 'null'.
     this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
     return this.variantData;
   }

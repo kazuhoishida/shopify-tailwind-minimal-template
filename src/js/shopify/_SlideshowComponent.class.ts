@@ -1,6 +1,14 @@
 import { SliderComponent } from './_SliderComponent.class'
 
 export class SlideshowComponent extends SliderComponent {
+  autoplay: any;
+  autoplayButtonIsSetToPlay: any;
+  autoplaySpeed: any;
+  sliderAutoplayButton: any;
+  sliderControlButtons: any;
+  sliderControlLinksArray: any;
+  sliderControlWrapper: any;
+  sliderFirstItemNode: any;
   constructor() {
     super();
     this.sliderControlWrapper = this.querySelector('.slider-buttons');
@@ -12,7 +20,7 @@ export class SlideshowComponent extends SliderComponent {
     if (this.sliderItemsToShow.length > 0) this.currentPage = 1;
 
     this.sliderControlLinksArray = Array.from(this.sliderControlWrapper.querySelectorAll('.slider-counter__link'));
-    this.sliderControlLinksArray.forEach(link => link.addEventListener('click', this.linkToSlide.bind(this)));
+    this.sliderControlLinksArray.forEach((link: any) => link.addEventListener('click', this.linkToSlide.bind(this)));
     this.slider.addEventListener('scroll', this.setSlideVisibility.bind(this));
     this.setSlideVisibility();
 
@@ -33,7 +41,7 @@ export class SlideshowComponent extends SliderComponent {
     this.autoplayButtonIsSetToPlay = true;
   }
 
-  onButtonClick(event) {
+  onButtonClick(event: any) {
     super.onButtonClick(event);
     const isFirstSlide = this.currentPage === 1;
     const isLastSlide = this.currentPage === this.sliderItemsToShow.length;
@@ -57,7 +65,7 @@ export class SlideshowComponent extends SliderComponent {
 
     if (!this.sliderControlButtons.length) return;
 
-    this.sliderControlButtons.forEach(link => {
+    this.sliderControlButtons.forEach((link: any) => {
       link.classList.remove('slider-counter__link--active');
       link.removeAttribute('aria-current');
     });
@@ -71,13 +79,13 @@ export class SlideshowComponent extends SliderComponent {
     this.autoplayButtonIsSetToPlay = !this.autoplayButtonIsSetToPlay;
   }
 
-  focusOutHandling(event) {
+  focusOutHandling(event: any) {
     const focusedOnAutoplayButton = event.target === this.sliderAutoplayButton || this.sliderAutoplayButton.contains(event.target);
     if (!this.autoplayButtonIsSetToPlay || focusedOnAutoplayButton) return;
     this.play();
   }
 
-  focusInHandling(event) {
+  focusInHandling(event: any) {
     const focusedOnAutoplayButton = event.target === this.sliderAutoplayButton || this.sliderAutoplayButton.contains(event.target);
     if (focusedOnAutoplayButton && this.autoplayButtonIsSetToPlay) {
       this.play();
@@ -97,12 +105,14 @@ export class SlideshowComponent extends SliderComponent {
     clearInterval(this.autoplay);
   }
 
-  togglePlayButtonState(pauseAutoplay) {
+  togglePlayButtonState(pauseAutoplay: any) {
     if (pauseAutoplay) {
       this.sliderAutoplayButton.classList.add('slideshow__autoplay--paused');
+      // @ts-expect-error TS(2339): Property 'accessibilityStrings' does not exist on ... Remove this comment to see the full error message
       this.sliderAutoplayButton.setAttribute('aria-label', window.accessibilityStrings.playSlideshow);
     } else {
       this.sliderAutoplayButton.classList.remove('slideshow__autoplay--paused');
+      // @ts-expect-error TS(2339): Property 'accessibilityStrings' does not exist on ... Remove this comment to see the full error message
       this.sliderAutoplayButton.setAttribute('aria-label', window.accessibilityStrings.pauseSlideshow);
     }
   }
@@ -115,7 +125,7 @@ export class SlideshowComponent extends SliderComponent {
   }
 
   setSlideVisibility() {
-    this.sliderItemsToShow.forEach((item, index) => {
+    this.sliderItemsToShow.forEach((item: any, index: any) => {
       const button = item.querySelector('a');
       if (index === this.currentPage - 1) {
         if (button) button.removeAttribute('tabindex');
@@ -129,7 +139,7 @@ export class SlideshowComponent extends SliderComponent {
     });
   }
 
-  linkToSlide(event) {
+  linkToSlide(event: any) {
     event.preventDefault();
     const slideScrollPosition = this.slider.scrollLeft + this.sliderFirstItemNode.clientWidth * (this.sliderControlLinksArray.indexOf(event.currentTarget) + 1 - this.currentPage);
     this.slider.scrollTo({

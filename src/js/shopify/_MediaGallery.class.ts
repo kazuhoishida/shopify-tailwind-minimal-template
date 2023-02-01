@@ -1,4 +1,7 @@
 export class MediaGallery extends HTMLElement {
+  elements: any;
+  mql: any;
+  stickyHeader: any;
   constructor() {
     super();
     this.elements = {
@@ -10,20 +13,20 @@ export class MediaGallery extends HTMLElement {
     if (!this.elements.thumbnails) return;
 
     this.elements.viewer.addEventListener('slideChanged', debounce(this.onSlideChanged.bind(this), 500));
-    this.elements.thumbnails.querySelectorAll('[data-target]').forEach((mediaToSwitch) => {
+    this.elements.thumbnails.querySelectorAll('[data-target]').forEach((mediaToSwitch: any) => {
       mediaToSwitch.querySelector('button').addEventListener('click', this.setActiveMedia.bind(this, mediaToSwitch.dataset.target, false));
     });
     if (this.dataset.desktopLayout !== 'stacked' && this.mql.matches) this.removeListSemantic();
   }
 
-  onSlideChanged(event) {
+  onSlideChanged(event: any) {
     const thumbnail = this.elements.thumbnails.querySelector(`[data-target="${ event.detail.currentElement.dataset.mediaId }"]`);
     this.setActiveThumbnail(thumbnail);
   }
 
-  setActiveMedia(mediaId, prepend) {
+  setActiveMedia(mediaId: any, prepend: any) {
     const activeMedia = this.elements.viewer.querySelector(`[data-media-id="${ mediaId }"]`);
-    this.elements.viewer.querySelectorAll('[data-media-id]').forEach((element) => {
+    this.elements.viewer.querySelectorAll('[data-media-id]').forEach((element: any) => {
       element.classList.remove('is-active');
     });
     activeMedia.classList.add('is-active');
@@ -54,21 +57,22 @@ export class MediaGallery extends HTMLElement {
     this.announceLiveRegion(activeMedia, activeThumbnail.dataset.mediaPosition);
   }
 
-  setActiveThumbnail(thumbnail) {
+  setActiveThumbnail(thumbnail: any) {
     if (!this.elements.thumbnails || !thumbnail) return;
 
-    this.elements.thumbnails.querySelectorAll('button').forEach((element) => element.removeAttribute('aria-current'));
+    this.elements.thumbnails.querySelectorAll('button').forEach((element: any) => element.removeAttribute('aria-current'));
     thumbnail.querySelector('button').setAttribute('aria-current', true);
     if (this.elements.thumbnails.isSlideVisible(thumbnail, 10)) return;
 
     this.elements.thumbnails.slider.scrollTo({ left: thumbnail.offsetLeft });
   }
 
-  announceLiveRegion(activeItem, position) {
+  announceLiveRegion(activeItem: any, position: any) {
     const image = activeItem.querySelector('.product__modal-opener--image img');
     if (!image) return;
     image.onload = () => {
       this.elements.liveRegion.setAttribute('aria-hidden', false);
+      // @ts-expect-error TS(2339): Property 'accessibilityStrings' does not exist on ... Remove this comment to see the full error message
       this.elements.liveRegion.innerHTML = window.accessibilityStrings.imageAvailable.replace(
         '[index]',
         position
@@ -80,7 +84,7 @@ export class MediaGallery extends HTMLElement {
     image.src = image.src;
   }
 
-  playActiveMedia(activeItem) {
+  playActiveMedia(activeItem: any) {
     window.pauseAllMedia();
     const deferredMedia = activeItem.querySelector('.deferred-media');
     if (deferredMedia) deferredMedia.loadContent(false);
@@ -95,7 +99,7 @@ export class MediaGallery extends HTMLElement {
   removeListSemantic() {
     if (!this.elements.viewer.slider) return;
     this.elements.viewer.slider.setAttribute('role', 'presentation');
-    this.elements.viewer.sliderItems.forEach(slide => slide.setAttribute('role', 'presentation'));
+    this.elements.viewer.sliderItems.forEach((slide: any) => slide.setAttribute('role', 'presentation'));
   }
 }
 

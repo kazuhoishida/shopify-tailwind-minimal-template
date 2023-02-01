@@ -25,6 +25,7 @@ export default function CategoryMenu() {
     }
   }, [])
 
+  // @ts-expect-error TS(2531): Object is possibly 'null'.
   const categories = JSON.parse(document.getElementById("inline-json-category").text)
 
   console.log(categories)
@@ -33,38 +34,62 @@ export default function CategoryMenu() {
   const [activeMenu, setActiveMenu] = useState("all")
   const [activeCategory, setActiveCategory] = useState("all")
 
-  const updateMenu = (e) => {
+  const updateMenu = (e: any) => {
     e.preventDefault()
     const handle = e.target.dataset.handle
     setActiveMenu(handle)
   }
 
   return (
+    // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
     <div className="flex justify-center mx-auto sm:w-page-mobile w-page-mobile">
+      // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
       <div className="text-center relative w-full">
+        // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
         <ul className="flex justify-center mb-8 mb-4 text-26">
-          {categories.nav.map(({ url, title, id, handle }) => (
+          {categories.nav.map(({
+            url,
+            title,
+            id,
+            handle
+          }: any) => (
+            // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
             <li className="p-2 mx-8 mx-2  whitespace-nowrap text-24 text-18" key={id}>
+              // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
               <a href={url} className={(activeMenu === handle ? "activeCatList " : "") + "hover:border-b border-black hover:opacity-60 transition-all"} data-handle={handle} onClick={updateMenu}>
                 {title}
+              // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
               </a>
+            // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
             </li>
           ))}
+        // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
         </ul>
-        {categories.nav.map((list) => (
-          <ul className={(activeMenu === list.handle ? "active " : "") + "categoryNameUl"}>
-            {list.links.map(({ url, title, id }) => (
-              <li className="p-2 mx-8 sm:mx-0 mx-0 sm:text-left text-left text-16 text-13 " key={id}>
-                <a href={url} className={defaultVendor === list.handle && activeCategory === title.toLowerCase() ? "border-b border-black text-base-text" : "" + "hover:text-base-text hover:border-b border-black"}>
-                  {title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        ))}
+        // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
+        {categories.nav.map((list: any) => <ul className={(activeMenu === list.handle ? "active " : "") + "categoryNameUl"}>
+          {list.links.map(({
+            url,
+            title,
+            id
+          }: any) => (
+            // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
+            <li className="p-2 mx-8 sm:mx-0 mx-0 sm:text-left text-left text-16 text-13 " key={id}>
+              // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
+              <a href={url} className={defaultVendor === list.handle && activeCategory === title.toLowerCase() ? "border-b border-black text-base-text" : "" + "hover:text-base-text hover:border-b border-black"}>
+                {title}
+              // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
+              </a>
+            // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
+            </li>
+          ))}
+        // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
+        </ul>)}
+      // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
       </div>
+    // @ts-expect-error TS(7026): JSX element implicitly has type 'any' because no i... Remove this comment to see the full error message
     </div>
-  )
+  );
 }
 
+// @ts-expect-error TS(17004): Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
 render(<CategoryMenu />, document.getElementById("app-category-menu"))

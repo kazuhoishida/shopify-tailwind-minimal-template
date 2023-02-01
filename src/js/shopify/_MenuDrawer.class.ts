@@ -1,4 +1,5 @@
 export class MenuDrawer extends HTMLElement {
+  mainDetailsToggle: any;
   constructor() {
     super();
 
@@ -16,7 +17,7 @@ export class MenuDrawer extends HTMLElement {
     this.querySelectorAll('button').forEach(button => button.addEventListener('click', this.onCloseButtonClick.bind(this)));
   }
 
-  onKeyUp(event) {
+  onKeyUp(event: any) {
     if(event.code.toUpperCase() !== 'ESCAPE') return;
 
     const openDetailsElement = event.target.closest('details[open]');
@@ -25,7 +26,7 @@ export class MenuDrawer extends HTMLElement {
     openDetailsElement === this.mainDetailsToggle ? this.closeMenuDrawer(event, this.mainDetailsToggle.querySelector('summary')) : this.closeSubmenu(openDetailsElement);
   }
 
-  onSummaryClick(event) {
+  onSummaryClick(event: any) {
     const summaryElement = event.currentTarget;
     const detailsElement = summaryElement.parentNode;
     const isOpen = detailsElement.hasAttribute('open');
@@ -48,7 +49,7 @@ export class MenuDrawer extends HTMLElement {
     }
   }
 
-  openMenuDrawer(summaryElement) {
+  openMenuDrawer(summaryElement: any) {
     setTimeout(() => {
       this.mainDetailsToggle.classList.add('menu-opening');
     });
@@ -57,41 +58,43 @@ export class MenuDrawer extends HTMLElement {
     document.body.classList.add(`overflow-hidden-${this.dataset.breakpoint}`);
   }
 
-  closeMenuDrawer(event, elementToFocus = false) {
+  closeMenuDrawer(event: any, elementToFocus = false) {
     if (event === undefined) return;
 
     this.mainDetailsToggle.classList.remove('menu-opening');
-    this.mainDetailsToggle.querySelectorAll('details').forEach(details =>  {
+    this.mainDetailsToggle.querySelectorAll('details').forEach((details: any) => {
       details.removeAttribute('open');
       details.classList.remove('menu-opening');
     });
     document.body.classList.remove(`overflow-hidden-${this.dataset.breakpoint}`);
+    // @ts-expect-error TS(2345): Argument of type 'boolean' is not assignable to pa... Remove this comment to see the full error message
     removeTrapFocus(elementToFocus);
     this.closeAnimation(this.mainDetailsToggle);
   }
 
-  onFocusOut(event) {
+  onFocusOut(event: any) {
     setTimeout(() => {
+      // @ts-expect-error TS(2554): Expected 1-2 arguments, but got 0.
       if (this.mainDetailsToggle.hasAttribute('open') && !this.mainDetailsToggle.contains(document.activeElement)) this.closeMenuDrawer();
     });
   }
 
-  onCloseButtonClick(event) {
+  onCloseButtonClick(event: any) {
     const detailsElement = event.currentTarget.closest('details');
     this.closeSubmenu(detailsElement);
   }
 
-  closeSubmenu(detailsElement) {
+  closeSubmenu(detailsElement: any) {
     detailsElement.classList.remove('menu-opening');
     detailsElement.querySelector('summary').setAttribute('aria-expanded', false);
     removeTrapFocus(detailsElement.querySelector('summary'));
     this.closeAnimation(detailsElement);
   }
 
-  closeAnimation(detailsElement) {
-    let animationStart;
+  closeAnimation(detailsElement: any) {
+    let animationStart: any;
 
-    const handleAnimation = (time) => {
+    const handleAnimation = (time: any) => {
       if (animationStart === undefined) {
         animationStart = time;
       }

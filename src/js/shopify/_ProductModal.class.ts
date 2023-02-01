@@ -9,7 +9,7 @@ export class ProductModal extends ModalDialog {
     super.hide();
   }
 
-  show(opener) {
+  show(opener: any) {
     super.show(opener);
     this.showActiveMedia();
   }
@@ -23,17 +23,23 @@ export class ProductModal extends ModalDialog {
     const activeMedia = this.querySelector(`[data-media-id="${
       this.openedBy.getAttribute("data-media-id")
     }"]`);
+    // @ts-expect-error TS(2531): Object is possibly 'null'.
     const activeMediaTemplate = activeMedia.querySelector('template');
     const activeMediaContent = activeMediaTemplate
       ? activeMediaTemplate.content
       : null;
+    // @ts-expect-error TS(2531): Object is possibly 'null'.
     activeMedia.classList.add('active');
+    // @ts-expect-error TS(2531): Object is possibly 'null'.
     activeMedia.scrollIntoView();
 
     const container = this.querySelector('[role="document"]');
+    // @ts-expect-error TS(2531): Object is possibly 'null'.
     container.scrollLeft = (activeMedia.width - container.clientWidth) / 2;
 
+    // @ts-expect-error TS(2531): Object is possibly 'null'.
     if (activeMedia.nodeName == 'DEFERRED-MEDIA' && activeMediaContent && activeMediaContent.querySelector('.js-youtube')) 
+      // @ts-expect-error TS(2531): Object is possibly 'null'.
       activeMedia.loadContent();
     
 
