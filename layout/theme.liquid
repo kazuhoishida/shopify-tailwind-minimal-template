@@ -14,8 +14,6 @@
       {{ "accessibility.skip_to_text" | t }}
     </a>
 
-    {% section 'announcement' %}
-
     {% section 'header' %}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
@@ -34,7 +32,6 @@
         cart_add_url: '{{ routes.cart_add_url }}',
         cart_change_url: '{{ routes.cart_change_url }}',
         cart_update_url: '{{ routes.cart_update_url }}',
-        predictive_search_url: '{{ routes.predictive_search_url }}'
       };
 
       window.cartStrings = {
@@ -55,9 +52,5 @@
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
       }
     </script>
-
-    {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
   </body>
 </html>

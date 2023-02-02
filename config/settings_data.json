@@ -93,9 +93,6 @@
     "social_snapchat_link": "",
     "social_youtube_link": "https://www.youtube.com/",
     "social_vimeo_link": "",
-    "predictive_search_enabled": true,
-    "predictive_search_show_vendor": false,
-    "predictive_search_show_price": false,
     "favicon": "shopify://shop_images/favicon.png",
     "currency_code_enabled": true,
     "checkout_header_image": "shopify://shop_images/Mask_group_3.png",
@@ -139,12 +136,6 @@
         "type": "main-password-footer",
         "settings": {
           "color_scheme": "background-1"
-        }
-      },
-      "announcement": {
-        "type": "announcement",
-        "settings": {
-          "announcement": "アナウンスのテキストが入ります"
         }
       }
     },
@@ -244,9 +235,6 @@
       "social_snapchat_link": "",
       "social_youtube_link": "",
       "social_vimeo_link": "",
-      "predictive_search_enabled": true,
-      "predictive_search_show_vendor": false,
-      "predictive_search_show_price": false,
       "currency_code_enabled": true,
       "sections": {
         "header": {
