@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "information-blog",
+      "type": "main-blog",
       "settings": {
       }
     }
