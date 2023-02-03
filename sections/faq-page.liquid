@@ -9,7 +9,7 @@
     {% for block in section.blocks %}
       {% case block.type %}
         {% when 'page-title' %}
-          {% render 'utility-page-title', text: block.settings.page_title %}
+          {{ block.settings.page_title }}
       {% endcase %}
     {% endfor %}
     <ul>
