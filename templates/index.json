@@ -1,8 +1,8 @@
 {
   "sections": {
-    "main-top": {
+    "top-first-view": {
       "type": "top-first-view"
     }
   },
-  "order": ["main-top"]
+  "order": ["top-first-view"]
 }

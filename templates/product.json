@@ -1,8 +1,8 @@
 {
   "sections": {
-    "main": {
+    "main-product": {
       "type": "main-product"
     }
   },
-  "order": ["main"]
+  "order": ["main-product"]
 }

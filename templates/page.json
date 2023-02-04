@@ -1,8 +1,8 @@
 {
   "sections": {
-    "main": {
+    "main-page": {
       "type": "main-page"
     }
   },
-  "order": ["main"]
+  "order": ["main-page"]
 }
