@@ -16,7 +16,7 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,``tsx}' --config .setting/.prettierrc",
     "eslint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --config .setting/.eslintrc.json",
     "eslint:fix": "eslint --fix 'src/**/*.{js,ts}' --config .setting/.eslintrc.json",
-    "checkTypes": "tsc --noEmit --skipLibCheck",
+    "checkTypes": "tsc --noEmit",
     "theme:serve": "shopify theme dev",
     "theme:check": "shopify theme check -a",
     "theme:logout": "shopify auth logout",
