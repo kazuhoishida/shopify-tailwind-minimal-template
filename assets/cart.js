@@ -12,15 +12,23 @@ customElements.define("cart-remove-button", CartRemoveButton);
 var CartItems = class extends HTMLElement {
   constructor() {
     super();
-    this.lineItemStatusElement = document.getElementById("shopping-cart-line-item-status");
-    this.currentItemCount = Array.from(this.querySelectorAll('[name="updates[]"]')).reduce((total, quantityInput) => total + parseInt(quantityInput.value), 0);
+    this.lineItemStatusElement = document.getElementById(
+      "shopping-cart-line-item-status"
+    );
+    this.currentItemCount = Array.from(
+      this.querySelectorAll('[name="updates[]"]')
+    ).reduce((total, quantityInput) => total + parseInt(quantityInput.value), 0);
     this.debouncedOnChange = debounce((event) => {
       this.onChange(event);
     }, 300);
     this.addEventListener("change", this.debouncedOnChange.bind(this));
   }
   onChange(event) {
-    this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute("name"));
+    this.updateQuantity(
+      event.target.dataset.index,
+      event.target.value,
+      document.activeElement.getAttribute("name")
+    );
   }
   getSectionsToRender() {
     return [
@@ -64,7 +72,10 @@ var CartItems = class extends HTMLElement {
         cartFooter.classList.toggle("is-empty", parsedState.item_count === 0);
       this.getSectionsToRender().forEach((section) => {
         const elementToReplace = document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
-        elementToReplace.innerHTML = this.getSectionInnerHTML(parsedState.sections[section.section], section.selector);
+        elementToReplace.innerHTML = this.getSectionInnerHTML(
+          parsedState.sections[section.section],
+          section.selector
+        );
       });
       this.updateLiveRegions(line, parsedState.item_count);
       const lineItem = document.getElementById(`CartItem-${line}`);
@@ -72,14 +83,19 @@ var CartItems = class extends HTMLElement {
         lineItem.querySelector(`[name="${name}"]`).focus();
       this.disableLoading();
     }).catch(() => {
-      this.querySelectorAll(".loading-overlay").forEach((overlay) => overlay.classList.add("hidden"));
+      this.querySelectorAll(".loading-overlay").forEach(
+        (overlay) => overlay.classList.add("hidden")
+      );
       document.getElementById("cart-errors").textContent = window.cartStrings.error;
       this.disableLoading();
     });
   }
   updateLiveRegions(line, itemCount) {
     if (this.currentItemCount === itemCount) {
-      document.getElementById(`Line-item-error-${line}`).querySelector(".cart-item__error-text").innerHTML = window.cartStrings.quantityError.replace("[quantity]", document.getElementById(`Quantity-${line}`).value);
+      document.getElementById(`Line-item-error-${line}`).querySelector(".cart-item__error-text").innerHTML = window.cartStrings.quantityError.replace(
+        "[quantity]",
+        document.getElementById(`Quantity-${line}`).value
+      );
     }
     this.currentItemCount = itemCount;
     this.lineItemStatusElement.setAttribute("aria-hidden", true);
@@ -94,7 +110,9 @@ var CartItems = class extends HTMLElement {
   }
   enableLoading(line) {
     document.getElementById("main-cart-items").classList.add("cart__items--disabled");
-    this.querySelectorAll(`#CartItem-${line} .loading-overlay`).forEach((overlay) => overlay.classList.remove("hidden"));
+    this.querySelectorAll(`#CartItem-${line} .loading-overlay`).forEach(
+      (overlay) => overlay.classList.remove("hidden")
+    );
     document.activeElement.blur();
     this.lineItemStatusElement.setAttribute("aria-hidden", false);
   }

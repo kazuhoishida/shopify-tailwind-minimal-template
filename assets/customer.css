@@ -304,6 +304,7 @@
   height: 4rem;
   width: 100%;
   padding: 0;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -408,23 +409,14 @@
 
 /* Account/Order */
 
-.account {
-  margin: 6rem auto 9rem;
-  max-width: var(--page-width);
-  padding: 0 2rem;
-}
-
-.order {
+.account, .order {
   margin: 6rem auto 9rem;
   max-width: var(--page-width);
   padding: 0 2rem;
 }
 
 @media screen and (min-width: 750px) {
-  .account {
-    padding: 0 5rem;
-  }
-  .order {
+  .account, .order {
     padding: 0 5rem;
   }
 }
@@ -458,39 +450,22 @@
   }
 }
 
-.account p {
+.account p, .order p {
   margin: 0 0 2rem;
   font-size: 1.6rem;
 }
 
-.order p {
-  margin: 0 0 2rem;
-  font-size: 1.6rem;
-}
-
-.account h1 {
+.account h1, .order h1 {
   margin-bottom: 1rem;
 }
 
-.order h1 {
-  margin-bottom: 1rem;
-}
-
-.account h2 {
-  margin-top: 4rem;
-  margin-bottom: 1rem;
-}
-
-.order h2 {
+.account h2, .order h2 {
   margin-top: 4rem;
   margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 990px) {
-  .account h2 {
-    margin-top: 0;
-  }
-  .order h2 {
+  .account h2, .order h2 {
     margin-top: 0;
   }
 }
@@ -520,6 +495,7 @@
 
 .account table td:first-of-type a {
   padding: 1.1rem 1.5rem;
+  -webkit-text-decoration: none;
   text-decoration: none;
   box-shadow: 0 0 0 0.1rem rgba(var(--color-link), 0.2);
   border: 0.1rem solid transparent;
