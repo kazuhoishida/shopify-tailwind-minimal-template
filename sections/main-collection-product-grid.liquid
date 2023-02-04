@@ -1,7 +1,9 @@
 <ul>
   {%- for product in collection.products -%}
     <li>
-      {% render 'card-product', card_product: product, lazy_load: true %}
+      <a href="{{ product.url }}">
+        {{ product.title }}
+      </a>
     </li>
   {%- endfor -%}
 </ul>

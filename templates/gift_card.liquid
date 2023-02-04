@@ -84,13 +84,6 @@
         --inputs-shadow-blur-radius: {{ settings.inputs_shadow_blur }}px;
       }
     {% endstyle %}
-
-    {%- unless settings.type_body_font.system? -%}
-      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
-    {%- endunless -%}
-    {%- unless settings.type_header_font.system? -%}
-      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
-    {%- endunless -%}
   </head>
 
   <body>
