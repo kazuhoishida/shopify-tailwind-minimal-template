@@ -1,7 +1,7 @@
 LICENSE.md
 README.md
 build
-build.ts
+build.mjs
 node_modules
 package.json
 postcss.config.ts
