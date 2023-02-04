@@ -30,9 +30,7 @@
 
 {% comment %} styles {% endcomment %}
 {% render 'global-css-variables' %}
-{{ 'base.css' | asset_url | stylesheet_tag }}
 {{ 'tailwind.css' | asset_url | stylesheet_tag }}
-{{ 'policy.css' | asset_url | stylesheet_tag }}
 
 <script>
   document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
