@@ -9,3 +9,4 @@ release-notes.md
 src
 tailwind.config.ts
 yarn.lock
+tsconfig.json
