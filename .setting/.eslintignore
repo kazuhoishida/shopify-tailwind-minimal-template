@@ -1,0 +1,8 @@
+shopify/
+e2e/
+**/node_modules/
+**/*.min.js
+*.config.js
+*.config.ts
+*.config.cjs
+.eslintrc.json

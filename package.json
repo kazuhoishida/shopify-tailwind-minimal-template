@@ -9,7 +9,12 @@
     "dev:js": "node ./build.cjs",
     "build": "run-p build:*",
     "build:css": "NODE_ENV=PRODUCTION postcss src/css/**/[^_]*.css --no-map --dir assets --config postcss.config.cjs",
-    "build:js": "NODE_ENV=PRODUCTION node ./build.cjs"
+    "build:js": "NODE_ENV=PRODUCTION node ./build.cjs",
+    "lint": "npm-run-all -p eslint checkTypes stylelint theme:check",
+    "lint:fix": "npm-run-all eslint:fix stylelint:fix format",
+    "format": "prettier --write --plugin-search-dir=. 'src/**/*.{js,ts}' --config .setting/.prettierrc",
+    "eslint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --config .setting/.eslintrc.json",
+    "eslint:fix": "eslint --fix 'src/**/*.{js,ts}' --config .setting/.eslintrc.json"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
@@ -26,6 +31,8 @@
   },
   "dependencies": {
     "@types/eslint": "^8.21.0",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
     "cssnano": "^5.1.7",
     "eslint": "^8.33.0",
     "ts-node": "^10.9.1",
