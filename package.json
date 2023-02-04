@@ -18,7 +18,7 @@
     "eslint:fix": "eslint --fix 'src/**/*.{js,ts}' --config .setting/.eslintrc.json",
     "checkTypes": "tsc --noEmit",
     "theme:serve": "shopify theme dev",
-    "theme:check": "shopify theme check -a",
+    "theme:check": "shopify theme check",
     "theme:logout": "shopify auth logout",
     "cheat": "opener https://www.shopify.com/partners/shopify-cheat-sheet"
   },
