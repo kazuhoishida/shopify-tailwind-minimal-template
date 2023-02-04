@@ -4,7 +4,6 @@
 <meta name="theme-color" content="">
 <link rel="canonical" href="{{ canonical_url }}">
 <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-<link rel="stylesheet" href="https://use.typekit.net/cpv8ptn.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -35,13 +34,6 @@
 {{ 'tailwind.css' | asset_url | stylesheet_tag }}
 {{ 'policy.css' | asset_url | stylesheet_tag }}
 
-{%- unless settings.type_body_font.system? -%}
-  <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
-{%- endunless -%}
-{%- unless settings.type_header_font.system? -%}
-  <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
-{%- endunless -%}
-
 <script>
   document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
   if (Shopify.designMode) {
@@ -50,7 +42,3 @@
 </script>
 
 <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-
-{% comment %} swiper {% endcomment %}
-{{ '//unpkg.com/swiper/swiper-bundle.min.css' | stylesheet_tag }}
-{{ '//unpkg.com/swiper/swiper-bundle.min.js' | script_tag }}
