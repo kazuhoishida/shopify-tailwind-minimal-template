@@ -1,8 +1,8 @@
 {
   "sections": {
-    "top-fv": {
-      "type": "top-fv-hero-img"
+    "main-top": {
+      "type": "top-first-view"
     }
   },
-  "order": ["top-fv"]
+  "order": ["main-top"]
 }
