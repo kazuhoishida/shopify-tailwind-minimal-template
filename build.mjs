@@ -7,6 +7,7 @@ const context = await esbuild.context({
   format: "esm",
   outdir: "assets",
   logLevel: "info",
+  minify: process.env.NODE_ENV === "PRODUCTION",
 })
 
 process.env.NODE_ENV !== "PRODUCTION" ? await context.watch() : await context.rebuild()
