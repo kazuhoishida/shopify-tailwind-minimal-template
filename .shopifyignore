@@ -1,12 +1,12 @@
 LICENSE.md
 README.md
 build
-build.js
+build.mjs
 node_modules
 package.json
-postcss.config.js
-react-shim.js
+postcss.config.ts
 release-notes.md
 src
-tailwind.config.js
+tailwind.config.ts
 yarn.lock
+tsconfig.json
