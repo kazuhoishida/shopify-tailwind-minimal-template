@@ -12,11 +12,8 @@
 {% endcomment %}
 
 {%- liquid
-  assign sort_by = results.sort_by | default: results.default_sort_by
   if results.url
-    assign results_url = results.url
   else 
-    assign terms = results.terms | escape
   endif
 -%}
 
