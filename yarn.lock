@@ -421,6 +421,13 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-18.11.18.tgz"
   integrity sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==
 
+"@types/opener@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@types/opener/-/opener-1.4.0.tgz#7967fae45cfabfe1fa268512b1b304f5a2b1127f"
+  integrity sha512-6KEABBcWAD6PychSyUUXuyCOIy64c5V6KJczTK4hpR5JKSBdK/s/LFQgRDnfy0F6lQWf9UvjE5Z2PbU7mhU3Tw==
+  dependencies:
+    "@types/node" "*"
+
 "@types/prettier@^2.7.2":
   version "2.7.2"
   resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.7.2.tgz"
@@ -1925,6 +1932,11 @@ once@^1.3.0:
   integrity sha1-WDsap3WWHUsROsF9nFC6753Xa9E=
   dependencies:
     wrappy "1"
+
+opener@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/opener/-/opener-1.5.2.tgz#5d37e1f35077b9dcac4301372271afdeb2a13598"
+  integrity sha512-ur5UIdyw5Y7yEj9wLzhqXiy6GZ3Mwx0yGI+5sMn2r0N0v3cKJvUmFH5yPP+WXh9e0xfyzyJX95D8l088DNFj7A==
 
 optionator@^0.9.1:
   version "0.9.1"
