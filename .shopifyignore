@@ -1,11 +1,11 @@
 LICENSE.md
 README.md
 build
-build.js
+build.ts
 node_modules
 package.json
-postcss.config.js
+postcss.config.ts
 release-notes.md
 src
-tailwind.config.js
+tailwind.config.ts
 yarn.lock

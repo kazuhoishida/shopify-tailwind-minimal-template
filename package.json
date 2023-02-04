@@ -5,11 +5,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "run-p dev:*",
-    "dev:css": "postcss src/css/**/[^_]*.css --watch --dir assets --config postcss.config.js",
-    "dev:js": "node ./build.js",
+    "dev:css": "postcss src/css/**/[^_]*.css --watch --dir assets --config postcss.config.cjs",
+    "dev:js": "node ./build.cjs",
     "build": "run-p build:*",
-    "build:css": "NODE_ENV=PRODUCTION postcss src/css/**/[^_]*.css --no-map --dir assets --config postcss.config.js",
-    "build:js": "NODE_ENV=PRODUCTION node ./build.js"
+    "build:css": "NODE_ENV=PRODUCTION postcss src/css/**/[^_]*.css --no-map --dir assets --config postcss.config.cjs",
+    "build:js": "NODE_ENV=PRODUCTION node ./build.cjs"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
@@ -25,6 +25,10 @@
     "tailwindcss": "^0.0.0-insiders.50024e4"
   },
   "dependencies": {
-    "cssnano": "^5.1.7"
+    "@types/eslint": "^8.21.0",
+    "cssnano": "^5.1.7",
+    "eslint": "^8.33.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
   }
 }
