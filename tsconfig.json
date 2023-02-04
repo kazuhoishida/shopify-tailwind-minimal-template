@@ -13,7 +13,8 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "allowJs": true,
-    "checkJs": true
+    "checkJs": true,
+    "outDir": "assets"
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js"]
 }
