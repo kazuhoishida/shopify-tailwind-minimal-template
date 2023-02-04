@@ -338,7 +338,6 @@
 .login a {
   display: block;
   margin: 0 auto;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -588,7 +587,6 @@
 }
 
 .order .fulfillment {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   border: 0.01rem solid rgba(var(--color-foreground), 0.2);
