@@ -2,44 +2,48 @@ import { ModalDialog } from './_ModalDialog.class'
 
 export class ProductModal extends ModalDialog {
   constructor() {
-    super();
+    super()
   }
 
   hide() {
-    super.hide();
+    super.hide()
   }
 
   show(opener) {
-    super.show(opener);
-    this.showActiveMedia();
+    super.show(opener)
+    this.showActiveMedia()
   }
 
   showActiveMedia() {
-    this.querySelectorAll(`[data-media-id]:not([data-media-id="${
-      this.openedBy.getAttribute("data-media-id")
-    }"])`).forEach((element) => {
-      element.classList.remove('active');
+    this.querySelectorAll(
+      `[data-media-id]:not([data-media-id="${this.openedBy.getAttribute(
+        'data-media-id'
+      )}"])`
+    ).forEach((element) => {
+      element.classList.remove('active')
     })
-    const activeMedia = this.querySelector(`[data-media-id="${
-      this.openedBy.getAttribute("data-media-id")
-    }"]`);
-    const activeMediaTemplate = activeMedia.querySelector('template');
+    const activeMedia = this.querySelector(
+      `[data-media-id="${this.openedBy.getAttribute('data-media-id')}"]`
+    )
+    const activeMediaTemplate = activeMedia.querySelector('template')
     const activeMediaContent = activeMediaTemplate
       ? activeMediaTemplate.content
-      : null;
-    activeMedia.classList.add('active');
-    activeMedia.scrollIntoView();
+      : null
+    activeMedia.classList.add('active')
+    activeMedia.scrollIntoView()
 
-    const container = this.querySelector('[role="document"]');
-    container.scrollLeft = (activeMedia.width - container.clientWidth) / 2;
+    const container = this.querySelector('[role="document"]')
+    container.scrollLeft = (activeMedia.width - container.clientWidth) / 2
 
-    if (activeMedia.nodeName == 'DEFERRED-MEDIA' && activeMediaContent && activeMediaContent.querySelector('.js-youtube')) 
-      activeMedia.loadContent();
-    
-
+    if (
+      activeMedia.nodeName == 'DEFERRED-MEDIA' &&
+      activeMediaContent &&
+      activeMediaContent.querySelector('.js-youtube')
+    )
+      activeMedia.loadContent()
   }
 }
 
 if (!customElements.get('product-modal')) {
-  customElements.define('product-modal', ProductModal);
+  customElements.define('product-modal', ProductModal)
 }

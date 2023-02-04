@@ -142,7 +142,20 @@ try {
   focusVisiblePolyfill();
 }
 function focusVisiblePolyfill() {
-  const navKeys = ["ARROWUP", "ARROWDOWN", "ARROWLEFT", "ARROWRIGHT", "TAB", "ENTER", "SPACE", "ESCAPE", "HOME", "END", "PAGEUP", "PAGEDOWN"];
+  const navKeys = [
+    "ARROWUP",
+    "ARROWDOWN",
+    "ARROWLEFT",
+    "ARROWRIGHT",
+    "TAB",
+    "ENTER",
+    "SPACE",
+    "ESCAPE",
+    "HOME",
+    "END",
+    "PAGEUP",
+    "PAGEDOWN"
+  ];
   let currentFocusedElement = null;
   let mouseClick = null;
   window.addEventListener("keydown", (event) => {
@@ -208,7 +221,10 @@ window.debounce = debounce2;
 function fetchConfig(type = "json") {
   return {
     method: "POST",
-    headers: { "Content-Type": "application/json", "Accept": `application/${type}` }
+    headers: {
+      "Content-Type": "application/json",
+      Accept: `application/${type}`
+    }
   };
 }
 window.fetchConfig = fetchConfig;
@@ -513,10 +529,12 @@ var SliderComponent = class extends HTMLElement {
       this.pageTotalElement.textContent = this.totalPages;
     }
     if (this.currentPage != previousPage) {
-      this.dispatchEvent(new CustomEvent("slideChanged", { detail: {
-        currentPage: this.currentPage,
-        currentElement: this.sliderItemsToShow[this.currentPage - 1]
-      } }));
+      this.dispatchEvent(new CustomEvent("slideChanged", {
+        detail: {
+          currentPage: this.currentPage,
+          currentElement: this.sliderItemsToShow[this.currentPage - 1]
+        }
+      }));
     }
     if (this.enableSliderLooping)
       return;
