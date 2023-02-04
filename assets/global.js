@@ -40,8 +40,14 @@ Shopify.postLink = function(path, options) {
 Shopify.CountryProvinceSelector = function(country_domid, province_domid, options) {
   this.countryEl = document.getElementById(country_domid);
   this.provinceEl = document.getElementById(province_domid);
-  this.provinceContainer = document.getElementById(options["hideElement"] || province_domid);
-  Shopify.addListener(this.countryEl, "change", Shopify.bind(this.countryHandler, this));
+  this.provinceContainer = document.getElementById(
+    options["hideElement"] || province_domid
+  );
+  Shopify.addListener(
+    this.countryEl,
+    "change",
+    Shopify.bind(this.countryHandler, this)
+  );
   this.initCountry();
   this.initProvince();
 };
@@ -89,7 +95,11 @@ Shopify.CountryProvinceSelector.prototype = {
   }
 };
 function getFocusableElements(container) {
-  return Array.from(container.querySelectorAll("summary, a[href], button:enabled, [tabindex]:not([tabindex^='-']), [draggable], area, input:not([type=hidden]):enabled, select:enabled, textarea:enabled, object, iframe"));
+  return Array.from(
+    container.querySelectorAll(
+      "summary, a[href], button:enabled, [tabindex]:not([tabindex^='-']), [draggable], area, input:not([type=hidden]):enabled, select:enabled, textarea:enabled, object, iframe"
+    )
+  );
 }
 window.getFocusableElements = getFocusableElements;
 document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
@@ -99,7 +109,10 @@ document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
     summary.setAttribute("aria-controls", summary.nextElementSibling.id);
   }
   summary.addEventListener("click", (event) => {
-    event.currentTarget.setAttribute("aria-expanded", !event.currentTarget.closest("details").hasAttribute("open"));
+    event.currentTarget.setAttribute(
+      "aria-expanded",
+      !event.currentTarget.closest("details").hasAttribute("open")
+    );
   });
   if (summary.closest("header-drawer"))
     return;
@@ -142,7 +155,20 @@ try {
   focusVisiblePolyfill();
 }
 function focusVisiblePolyfill() {
-  const navKeys = ["ARROWUP", "ARROWDOWN", "ARROWLEFT", "ARROWRIGHT", "TAB", "ENTER", "SPACE", "ESCAPE", "HOME", "END", "PAGEUP", "PAGEDOWN"];
+  const navKeys = [
+    "ARROWUP",
+    "ARROWDOWN",
+    "ARROWLEFT",
+    "ARROWRIGHT",
+    "TAB",
+    "ENTER",
+    "SPACE",
+    "ESCAPE",
+    "HOME",
+    "END",
+    "PAGEUP",
+    "PAGEDOWN"
+  ];
   let currentFocusedElement = null;
   let mouseClick = null;
   window.addEventListener("keydown", (event) => {
@@ -153,19 +179,26 @@ function focusVisiblePolyfill() {
   window.addEventListener("mousedown", (event) => {
     mouseClick = true;
   });
-  window.addEventListener("focus", () => {
-    if (currentFocusedElement)
-      currentFocusedElement.classList.remove("focused");
-    if (mouseClick)
-      return;
-    currentFocusedElement = document.activeElement;
-    currentFocusedElement.classList.add("focused");
-  }, true);
+  window.addEventListener(
+    "focus",
+    () => {
+      if (currentFocusedElement)
+        currentFocusedElement.classList.remove("focused");
+      if (mouseClick)
+        return;
+      currentFocusedElement = document.activeElement;
+      currentFocusedElement.classList.add("focused");
+    },
+    true
+  );
 }
 window.focusVisiblePolyfill = focusVisiblePolyfill;
 function pauseAllMedia() {
   document.querySelectorAll(".js-youtube").forEach((video) => {
-    video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
+    video.contentWindow.postMessage(
+      '{"event":"command","func":"pauseVideo","args":""}',
+      "*"
+    );
   });
   document.querySelectorAll(".js-vimeo").forEach((video) => {
     video.contentWindow.postMessage('{"method":"pause"}', "*");
@@ -208,7 +241,10 @@ window.debounce = debounce2;
 function fetchConfig(type = "json") {
   return {
     method: "POST",
-    headers: { "Content-Type": "application/json", "Accept": `application/${type}` }
+    headers: {
+      "Content-Type": "application/json",
+      Accept: `application/${type}`
+    }
   };
 }
 window.fetchConfig = fetchConfig;
@@ -219,7 +255,9 @@ var QuantityInput = class extends HTMLElement {
     super();
     this.input = this.querySelector("input");
     this.changeEvent = new Event("change", { bubbles: true });
-    this.querySelectorAll("button").forEach((button) => button.addEventListener("click", this.onButtonClick.bind(this)));
+    this.querySelectorAll("button").forEach(
+      (button) => button.addEventListener("click", this.onButtonClick.bind(this))
+    );
   }
   onButtonClick(event) {
     event.preventDefault();
@@ -237,14 +275,21 @@ var MenuDrawer = class extends HTMLElement {
     super();
     this.mainDetailsToggle = this.querySelector("details");
     if (navigator.platform === "iPhone")
-      document.documentElement.style.setProperty("--viewport-height", `${window.innerHeight}px`);
+      document.documentElement.style.setProperty(
+        "--viewport-height",
+        `${window.innerHeight}px`
+      );
     this.addEventListener("keyup", this.onKeyUp.bind(this));
     this.addEventListener("focusout", this.onFocusOut.bind(this));
     this.bindEvents();
   }
   bindEvents() {
-    this.querySelectorAll("summary").forEach((summary) => summary.addEventListener("click", this.onSummaryClick.bind(this)));
-    this.querySelectorAll("button").forEach((button) => button.addEventListener("click", this.onCloseButtonClick.bind(this)));
+    this.querySelectorAll("summary").forEach(
+      (summary) => summary.addEventListener("click", this.onSummaryClick.bind(this))
+    );
+    this.querySelectorAll("button").forEach(
+      (button) => button.addEventListener("click", this.onCloseButtonClick.bind(this))
+    );
   }
   onKeyUp(event) {
     if (event.code.toUpperCase() !== "ESCAPE")
@@ -252,7 +297,10 @@ var MenuDrawer = class extends HTMLElement {
     const openDetailsElement = event.target.closest("details[open]");
     if (!openDetailsElement)
       return;
-    openDetailsElement === this.mainDetailsToggle ? this.closeMenuDrawer(event, this.mainDetailsToggle.querySelector("summary")) : this.closeSubmenu(openDetailsElement);
+    openDetailsElement === this.mainDetailsToggle ? this.closeMenuDrawer(
+      event,
+      this.mainDetailsToggle.querySelector("summary")
+    ) : this.closeSubmenu(openDetailsElement);
   }
   onSummaryClick(event) {
     const summaryElement = event.currentTarget;
@@ -260,8 +308,14 @@ var MenuDrawer = class extends HTMLElement {
     const isOpen = detailsElement.hasAttribute("open");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     function addTrapFocus() {
-      trapFocus(summaryElement.nextElementSibling, detailsElement.querySelector("button"));
-      summaryElement.nextElementSibling.removeEventListener("transitionend", addTrapFocus);
+      trapFocus(
+        summaryElement.nextElementSibling,
+        detailsElement.querySelector("button")
+      );
+      summaryElement.nextElementSibling.removeEventListener(
+        "transitionend",
+        addTrapFocus
+      );
     }
     if (detailsElement === this.mainDetailsToggle) {
       if (isOpen)
@@ -271,7 +325,10 @@ var MenuDrawer = class extends HTMLElement {
       setTimeout(() => {
         detailsElement.classList.add("menu-opening");
         summaryElement.setAttribute("aria-expanded", true);
-        !reducedMotion || reducedMotion.matches ? addTrapFocus() : summaryElement.nextElementSibling.addEventListener("transitionend", addTrapFocus);
+        !reducedMotion || reducedMotion.matches ? addTrapFocus() : summaryElement.nextElementSibling.addEventListener(
+          "transitionend",
+          addTrapFocus
+        );
       }, 100);
     }
   }
@@ -323,7 +380,10 @@ var MenuDrawer = class extends HTMLElement {
       } else {
         detailsElement.removeAttribute("open");
         if (detailsElement.closest("details[open]")) {
-          trapFocus(detailsElement.closest("details[open]"), detailsElement.querySelector("summary"));
+          trapFocus(
+            detailsElement.closest("details[open]"),
+            detailsElement.querySelector("summary")
+          );
         }
       }
     };
@@ -339,8 +399,15 @@ var HeaderDrawer = class extends MenuDrawer {
   }
   openMenuDrawer(summaryElement) {
     this.header = this.header || document.getElementById("shopify-section-header");
-    this.borderOffset = this.borderOffset || this.closest(".header-wrapper").classList.contains("header-wrapper--border-bottom") ? 1 : 0;
-    document.documentElement.style.setProperty("--header-bottom-position", `${parseInt(this.header.getBoundingClientRect().bottom - this.borderOffset)}px`);
+    this.borderOffset = this.borderOffset || this.closest(".header-wrapper").classList.contains(
+      "header-wrapper--border-bottom"
+    ) ? 1 : 0;
+    document.documentElement.style.setProperty(
+      "--header-bottom-position",
+      `${parseInt(
+        this.header.getBoundingClientRect().bottom - this.borderOffset
+      )}px`
+    );
     this.header.classList.add("menu-open");
     setTimeout(() => {
       this.mainDetailsToggle.classList.add("menu-opening");
@@ -360,7 +427,10 @@ customElements.define("header-drawer", HeaderDrawer);
 var ModalDialog = class extends HTMLElement {
   constructor() {
     super();
-    this.querySelector('[id^="ModalClose-"]').addEventListener("click", this.hide.bind(this));
+    this.querySelector('[id^="ModalClose-"]').addEventListener(
+      "click",
+      this.hide.bind(this)
+    );
     this.addEventListener("keyup", (event) => {
       if (event.code.toUpperCase() === "ESCAPE")
         this.hide();
@@ -415,10 +485,16 @@ var ProductModal = class extends ModalDialog {
     this.showActiveMedia();
   }
   showActiveMedia() {
-    this.querySelectorAll(`[data-media-id]:not([data-media-id="${this.openedBy.getAttribute("data-media-id")}"])`).forEach((element) => {
+    this.querySelectorAll(
+      `[data-media-id]:not([data-media-id="${this.openedBy.getAttribute(
+        "data-media-id"
+      )}"])`
+    ).forEach((element) => {
       element.classList.remove("active");
     });
-    const activeMedia = this.querySelector(`[data-media-id="${this.openedBy.getAttribute("data-media-id")}"]`);
+    const activeMedia = this.querySelector(
+      `[data-media-id="${this.openedBy.getAttribute("data-media-id")}"]`
+    );
     const activeMediaTemplate = activeMedia.querySelector("template");
     const activeMediaContent = activeMediaTemplate ? activeMediaTemplate.content : null;
     activeMedia.classList.add("active");
@@ -462,9 +538,13 @@ var DeferredMedia = class extends HTMLElement {
     window.pauseAllMedia();
     if (!this.getAttribute("loaded")) {
       const content = document.createElement("div");
-      content.appendChild(this.querySelector("template").content.firstElementChild.cloneNode(true));
+      content.appendChild(
+        this.querySelector("template").content.firstElementChild.cloneNode(true)
+      );
       this.setAttribute("loaded", true);
-      const deferredElement = this.appendChild(content.querySelector("video, model-viewer, iframe"));
+      const deferredElement = this.appendChild(
+        content.querySelector("video, model-viewer, iframe")
+      );
       if (focus)
         deferredElement.focus();
     }
@@ -493,11 +573,15 @@ var SliderComponent = class extends HTMLElement {
     this.nextButton.addEventListener("click", this.onButtonClick.bind(this));
   }
   initPages() {
-    this.sliderItemsToShow = Array.from(this.sliderItems).filter((element) => element.clientWidth > 0);
+    this.sliderItemsToShow = Array.from(this.sliderItems).filter(
+      (element) => element.clientWidth > 0
+    );
     if (this.sliderItemsToShow.length < 2)
       return;
     this.sliderItemOffset = this.sliderItemsToShow[1].offsetLeft - this.sliderItemsToShow[0].offsetLeft;
-    this.slidesPerPage = Math.floor((this.slider.clientWidth - this.sliderItemsToShow[0].offsetLeft) / this.sliderItemOffset);
+    this.slidesPerPage = Math.floor(
+      (this.slider.clientWidth - this.sliderItemsToShow[0].offsetLeft) / this.sliderItemOffset
+    );
     this.totalPages = this.sliderItemsToShow.length - this.slidesPerPage + 1;
     this.update();
   }
@@ -513,10 +597,14 @@ var SliderComponent = class extends HTMLElement {
       this.pageTotalElement.textContent = this.totalPages;
     }
     if (this.currentPage != previousPage) {
-      this.dispatchEvent(new CustomEvent("slideChanged", { detail: {
-        currentPage: this.currentPage,
-        currentElement: this.sliderItemsToShow[this.currentPage - 1]
-      } }));
+      this.dispatchEvent(
+        new CustomEvent("slideChanged", {
+          detail: {
+            currentPage: this.currentPage,
+            currentElement: this.sliderItemsToShow[this.currentPage - 1]
+          }
+        })
+      );
     }
     if (this.enableSliderLooping)
       return;
@@ -525,7 +613,9 @@ var SliderComponent = class extends HTMLElement {
     } else {
       this.prevButton.removeAttribute("disabled");
     }
-    if (this.isSlideVisible(this.sliderItemsToShow[this.sliderItemsToShow.length - 1])) {
+    if (this.isSlideVisible(
+      this.sliderItemsToShow[this.sliderItemsToShow.length - 1]
+    )) {
       this.nextButton.setAttribute("disabled", "disabled");
     } else {
       this.nextButton.removeAttribute("disabled");
@@ -557,8 +647,12 @@ var SlideshowComponent = class extends SliderComponent {
     this.sliderFirstItemNode = this.slider.querySelector(".slideshow__slide");
     if (this.sliderItemsToShow.length > 0)
       this.currentPage = 1;
-    this.sliderControlLinksArray = Array.from(this.sliderControlWrapper.querySelectorAll(".slider-counter__link"));
-    this.sliderControlLinksArray.forEach((link) => link.addEventListener("click", this.linkToSlide.bind(this)));
+    this.sliderControlLinksArray = Array.from(
+      this.sliderControlWrapper.querySelectorAll(".slider-counter__link")
+    );
+    this.sliderControlLinksArray.forEach(
+      (link) => link.addEventListener("click", this.linkToSlide.bind(this))
+    );
     this.slider.addEventListener("scroll", this.setSlideVisibility.bind(this));
     this.setSlideVisibility();
     if (this.slider.getAttribute("data-autoplay") === "true")
@@ -567,7 +661,10 @@ var SlideshowComponent = class extends SliderComponent {
   setAutoPlay() {
     this.sliderAutoplayButton = this.querySelector(".slideshow__autoplay");
     this.autoplaySpeed = this.slider.dataset.speed * 1e3;
-    this.sliderAutoplayButton.addEventListener("click", this.autoPlayToggle.bind(this));
+    this.sliderAutoplayButton.addEventListener(
+      "click",
+      this.autoPlayToggle.bind(this)
+    );
     this.addEventListener("mouseover", this.focusInHandling.bind(this));
     this.addEventListener("mouseleave", this.focusOutHandling.bind(this));
     this.addEventListener("focusin", this.focusInHandling.bind(this));
@@ -600,8 +697,13 @@ var SlideshowComponent = class extends SliderComponent {
       link.classList.remove("slider-counter__link--active");
       link.removeAttribute("aria-current");
     });
-    this.sliderControlButtons[this.currentPage - 1].classList.add("slider-counter__link--active");
-    this.sliderControlButtons[this.currentPage - 1].setAttribute("aria-current", true);
+    this.sliderControlButtons[this.currentPage - 1].classList.add(
+      "slider-counter__link--active"
+    );
+    this.sliderControlButtons[this.currentPage - 1].setAttribute(
+      "aria-current",
+      true
+    );
   }
   autoPlayToggle() {
     this.togglePlayButtonState(this.autoplayButtonIsSetToPlay);
@@ -625,7 +727,10 @@ var SlideshowComponent = class extends SliderComponent {
   play() {
     this.slider.setAttribute("aria-live", "off");
     clearInterval(this.autoplay);
-    this.autoplay = setInterval(this.autoRotateSlides.bind(this), this.autoplaySpeed);
+    this.autoplay = setInterval(
+      this.autoRotateSlides.bind(this),
+      this.autoplaySpeed
+    );
   }
   pause() {
     this.slider.setAttribute("aria-live", "polite");
@@ -634,10 +739,16 @@ var SlideshowComponent = class extends SliderComponent {
   togglePlayButtonState(pauseAutoplay) {
     if (pauseAutoplay) {
       this.sliderAutoplayButton.classList.add("slideshow__autoplay--paused");
-      this.sliderAutoplayButton.setAttribute("aria-label", window.accessibilityStrings.playSlideshow);
+      this.sliderAutoplayButton.setAttribute(
+        "aria-label",
+        window.accessibilityStrings.playSlideshow
+      );
     } else {
       this.sliderAutoplayButton.classList.remove("slideshow__autoplay--paused");
-      this.sliderAutoplayButton.setAttribute("aria-label", window.accessibilityStrings.pauseSlideshow);
+      this.sliderAutoplayButton.setAttribute(
+        "aria-label",
+        window.accessibilityStrings.pauseSlideshow
+      );
     }
   }
   autoRotateSlides() {
@@ -696,7 +807,10 @@ var VariantSelects = class extends HTMLElement {
     }
   }
   updateOptions() {
-    this.options = Array.from(this.querySelectorAll("select"), (select) => select.value);
+    this.options = Array.from(
+      this.querySelectorAll("select"),
+      (select) => select.value
+    );
   }
   updateMasterId() {
     this.currentVariant = this.getVariantData().find((variant) => {
@@ -710,25 +824,42 @@ var VariantSelects = class extends HTMLElement {
       return;
     if (!this.currentVariant.featured_media)
       return;
-    const mediaGallery = document.getElementById(`MediaGallery-${this.dataset.section}`);
-    mediaGallery.setActiveMedia(`${this.dataset.section}-${this.currentVariant.featured_media.id}`, true);
-    const modalContent = document?.querySelector(`#ProductModal-${this.dataset.section} .product-media-modal__content`);
-    const newMediaModal = modalContent?.querySelector(`[data-media-id="${this.currentVariant.featured_media.id}"]`);
+    const mediaGallery = document.getElementById(
+      `MediaGallery-${this.dataset.section}`
+    );
+    mediaGallery.setActiveMedia(
+      `${this.dataset.section}-${this.currentVariant.featured_media.id}`,
+      true
+    );
+    const modalContent = document?.querySelector(
+      `#ProductModal-${this.dataset.section} .product-media-modal__content`
+    );
+    const newMediaModal = modalContent?.querySelector(
+      `[data-media-id="${this.currentVariant.featured_media.id}"]`
+    );
     modalContent?.prepend(newMediaModal);
   }
   updateURL() {
     if (!this.currentVariant || this.dataset.updateUrl === "false")
       return;
-    window.history.replaceState({}, "", `${this.dataset.url}?variant=${this.currentVariant.id}`);
+    window.history.replaceState(
+      {},
+      "",
+      `${this.dataset.url}?variant=${this.currentVariant.id}`
+    );
   }
   updateShareUrl() {
     const shareButton = document.getElementById(`Share-${this.dataset.section}`);
     if (!shareButton)
       return;
-    shareButton.updateUrl(`${window.shopUrl}${this.dataset.url}?variant=${this.currentVariant.id}`);
+    shareButton.updateUrl(
+      `${window.shopUrl}${this.dataset.url}?variant=${this.currentVariant.id}`
+    );
   }
   updateVariantInput() {
-    const productForms = document.querySelectorAll(`#product-form-${this.dataset.section}, #product-form-installment`);
+    const productForms = document.querySelectorAll(
+      `#product-form-${this.dataset.section}, #product-form-installment`
+    );
     productForms.forEach((productForm) => {
       const input = productForm.querySelector('input[name="id"]');
       input.value = this.currentVariant.id;
@@ -755,7 +886,9 @@ var VariantSelects = class extends HTMLElement {
       productForm.handleErrorMessage();
   }
   renderProductInfo() {
-    fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`).then((response) => response.text()).then((responseText) => {
+    fetch(
+      `${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`
+    ).then((response) => response.text()).then((responseText) => {
       const id = `price-${this.dataset.section}`;
       const html = new DOMParser().parseFromString(responseText, "text/html");
       const destination = document.getElementById(id);
@@ -765,11 +898,16 @@ var VariantSelects = class extends HTMLElement {
       const price = document.getElementById(`price-${this.dataset.section}`);
       if (price)
         price.classList.remove("visibility-hidden");
-      this.toggleAddButton(!this.currentVariant.available, window.variantStrings.soldOut);
+      this.toggleAddButton(
+        !this.currentVariant.available,
+        window.variantStrings.soldOut
+      );
     });
   }
   toggleAddButton(disable = true, text, modifyClass = true) {
-    const productForm = document.getElementById(`product-form-${this.dataset.section}`);
+    const productForm = document.getElementById(
+      `product-form-${this.dataset.section}`
+    );
     if (!productForm)
       return;
     const addButton = productForm.querySelector('[name="add"]');
@@ -788,7 +926,9 @@ var VariantSelects = class extends HTMLElement {
       return;
   }
   setUnavailable() {
-    const button = document.getElementById(`product-form-${this.dataset.section}`);
+    const button = document.getElementById(
+      `product-form-${this.dataset.section}`
+    );
     const addButton = button?.querySelector('[name="add"]');
     const addButtonText = button?.querySelector('[name="add"] > span');
     const price = document.getElementById(`price-${this.dataset.section}`);
@@ -813,7 +953,9 @@ var VariantRadios = class extends VariantSelects {
   updateOptions() {
     const fieldsets = Array.from(this.querySelectorAll("fieldset"));
     this.options = fieldsets.map((fieldset) => {
-      return Array.from(fieldset.querySelectorAll("input")).find((radio) => radio.checked).value;
+      return Array.from(fieldset.querySelectorAll("input")).find(
+        (radio) => radio.checked
+      ).value;
     });
   }
 };
@@ -831,19 +973,29 @@ var MediaGallery = class extends HTMLElement {
     this.mql = window.matchMedia("(min-width: 750px)");
     if (!this.elements.thumbnails)
       return;
-    this.elements.viewer.addEventListener("slideChanged", debounce(this.onSlideChanged.bind(this), 500));
+    this.elements.viewer.addEventListener(
+      "slideChanged",
+      debounce(this.onSlideChanged.bind(this), 500)
+    );
     this.elements.thumbnails.querySelectorAll("[data-target]").forEach((mediaToSwitch) => {
-      mediaToSwitch.querySelector("button").addEventListener("click", this.setActiveMedia.bind(this, mediaToSwitch.dataset.target, false));
+      mediaToSwitch.querySelector("button").addEventListener(
+        "click",
+        this.setActiveMedia.bind(this, mediaToSwitch.dataset.target, false)
+      );
     });
     if (this.dataset.desktopLayout !== "stacked" && this.mql.matches)
       this.removeListSemantic();
   }
   onSlideChanged(event) {
-    const thumbnail = this.elements.thumbnails.querySelector(`[data-target="${event.detail.currentElement.dataset.mediaId}"]`);
+    const thumbnail = this.elements.thumbnails.querySelector(
+      `[data-target="${event.detail.currentElement.dataset.mediaId}"]`
+    );
     this.setActiveThumbnail(thumbnail);
   }
   setActiveMedia(mediaId, prepend) {
-    const activeMedia = this.elements.viewer.querySelector(`[data-media-id="${mediaId}"]`);
+    const activeMedia = this.elements.viewer.querySelector(
+      `[data-media-id="${mediaId}"]`
+    );
     this.elements.viewer.querySelectorAll("[data-media-id]").forEach((element) => {
       element.classList.remove("is-active");
     });
@@ -851,7 +1003,9 @@ var MediaGallery = class extends HTMLElement {
     if (prepend) {
       activeMedia.parentElement.prepend(activeMedia);
       if (this.elements.thumbnails) {
-        const activeThumbnail2 = this.elements.thumbnails.querySelector(`[data-target="${mediaId}"]`);
+        const activeThumbnail2 = this.elements.thumbnails.querySelector(
+          `[data-target="${mediaId}"]`
+        );
         activeThumbnail2.parentElement.prepend(activeThumbnail2);
       }
       if (this.elements.viewer.slider)
@@ -869,7 +1023,9 @@ var MediaGallery = class extends HTMLElement {
     this.playActiveMedia(activeMedia);
     if (!this.elements.thumbnails)
       return;
-    const activeThumbnail = this.elements.thumbnails.querySelector(`[data-target="${mediaId}"]`);
+    const activeThumbnail = this.elements.thumbnails.querySelector(
+      `[data-target="${mediaId}"]`
+    );
     this.setActiveThumbnail(activeThumbnail);
     this.announceLiveRegion(activeMedia, activeThumbnail.dataset.mediaPosition);
   }
@@ -911,7 +1067,9 @@ var MediaGallery = class extends HTMLElement {
     if (!this.elements.viewer.slider)
       return;
     this.elements.viewer.slider.setAttribute("role", "presentation");
-    this.elements.viewer.sliderItems.forEach((slide) => slide.setAttribute("role", "presentation"));
+    this.elements.viewer.sliderItems.forEach(
+      (slide) => slide.setAttribute("role", "presentation")
+    );
   }
 };
 customElements.define("media-gallery", MediaGallery);
