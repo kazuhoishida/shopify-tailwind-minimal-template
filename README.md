@@ -4,6 +4,7 @@ A Shopify theme bootstrapped with Liquid and Tailwind CSS.
 
 ### Tech Stack
 
+- Shopify (Liquid)
 - Tailwind CSS
 - PostCSS
 - TypeScript / JavaScript
@@ -15,7 +16,7 @@ To start developing the theme, follow these steps:
 
 ```bash
 # First time setup
-shopify theme develop --store=my-liquid-tailwind-template.myshopify.com
+shopify theme dev --store=my-liquid-tailwind-template.myshopify.com
 yarn start
 
 # For subsequent runs
