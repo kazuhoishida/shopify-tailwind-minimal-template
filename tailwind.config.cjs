@@ -1,7 +1,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme")
 
 module.exports = {
-  content: ["../**/*.liquid"],
+  content: ["./**/*.liquid"],
   theme: {
     extend: {
       colors: {

@@ -13,7 +13,9 @@
     "build:js": "NODE_ENV=PRODUCTION node ./build.mjs",
     "lint": "npm-run-all -p eslint checkTypes theme:check",
     "lint:fix": "npm-run-all eslint:fix format",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,``tsx}' --config .setting/.prettierrc",
+    "format": "npm-run-all format:*",
+    "format:js": "prettier --write 'src/**/*.{js,jsx,ts,tsx}' --config .setting/.prettierrc",
+    "format:liquid": "prettier --write '**/*.liquid' --config .setting/.prettierrc",
     "eslint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --config .setting/.eslintrc.json",
     "eslint:fix": "eslint --fix 'src/**/*.{js,ts}' --config .setting/.eslintrc.json",
     "checkTypes": "tsc --noEmit",
@@ -37,6 +39,7 @@
     "tailwindcss": "^3.2.4"
   },
   "dependencies": {
+    "@shopify/prettier-plugin-liquid": "^1.0.6",
     "@types/eslint": "^8.21.0",
     "@types/opener": "^1.4.0",
     "@types/prettier": "^2.7.2",
