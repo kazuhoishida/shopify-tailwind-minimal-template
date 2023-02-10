@@ -6,7 +6,7 @@
   "scripts": {
     "start": "run-p dev theme:serve",
     "dev": "run-p dev:*",
-    "dev:css": "postcss src/css/**/[^_]*.css --watch --dir assets --config postcss.config.cjs",
+    "dev:css": "tailwindcss -i ./src/css/tailwind.css -o ./assets/tailwind.css -w",
     "dev:js": "node ./build.mjs",
     "build": "run-p build:*",
     "build:css": "NODE_ENV=PRODUCTION postcss src/css/**/[^_]*.css --no-map --dir assets --config postcss.config.cjs",
