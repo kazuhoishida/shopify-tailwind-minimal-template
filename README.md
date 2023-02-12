@@ -12,14 +12,16 @@ A Shopify theme bootstrapped with Liquid and Tailwind CSS.
 
 ### Development
 
+Touch `.env` file and set the following variable:
+
+```
+SHOPIFY_STORE_URL=otsuka-fineart.myshopify.com
+```
+
 To start developing the theme, follow these steps:
 
 ```bash
-# First time setup
-shopify theme dev --store=my-liquid-tailwind-template.myshopify.com
-yarn start
-
-# For subsequent runs
+# Run dev server
 yarn start
 
 # To logout of the Shopify store
